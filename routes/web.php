@@ -11,8 +11,8 @@
 |
 */
 Route::get('/', function () {
+    return view('under_construction');
     return redirect(route('login'));
-    // return view('welcome');
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', function () {

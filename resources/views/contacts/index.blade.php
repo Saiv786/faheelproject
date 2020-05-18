@@ -16,20 +16,21 @@
                             <th class="hidden-md-down">Subscribers</th>
                             <th class="hidden-md-down" width="150px">Open Rate</th>
                             <th class="hidden-md-down" width="150px">Click Rate</th>
-                            <th>Priority</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($lists as $list)
                         <tr>
                             <td>
-                                <a class="single-user-name" href="javascript:void(0);">Textile Companies</a><br>
+                                <a class="single-user-name" href="{{ action('ContactListController@show',['id'=>$list->id]) }}">{{$list->name}}</a><br>
                             </td>
                             <td>
-                                <strong>Contacts of all textile resources in lahore</strong><br>
+                                <strong>{{$list->description}}</strong><br>
                             </td>
                             <td class="hidden-md-down">
-                                5
+                                <a class="single-user-name" href="{{ action('ContactListController@showContacts',['id'=>$list->id]) }}">{{$list->count}}</a><br>
+
                             </td>
                             <td class="hidden-md-down">
                                 <div class="progress">
@@ -43,17 +44,33 @@
                                 </div>
                                 <small>Rate: 80%</small>
                             </td>
-                            <td><span class="badge badge-info">Medium</span></td>
+                            <td>
+                                <a href="{{ action('ContactListController@edit',['id'=>$list->id]) }}" data-popup="tooltip" title="" type="button" class="btn btn-icon" data-original-title="New subscriber">
+                                    <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-accounts-add"></i>
+                                </a>
+                                <form action="{{ url('/contacts', ['id' => $list->id]) }}" method="post">
+                                    <button type="submit" class="btn btn-danger btn-icon">
+                                        <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-delete"></i>
+                                    </button>
+                                    {!! method_field('delete') !!}
+                                    {!! csrf_field() !!}
+                                </form>
+
+                                <!-- <a href="{{ action('ContactListController@destroy',['id'=>$list->id]) }}" data-popup="tooltip" title="" type="button" class="btn btn-danger btn-icon" data-original-title="New subscriber">
+                                    <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-delete"></i>
+                                </a> -->
+                            </td>
+                            <!-- <td><span class="badge badge-info">Medium</span></td> -->
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
                 @if(count($lists)==0)
-                    <div class="alert alert-success">
-                        <center>
-                            <strong>No Contact Lists Found!</strong>
-                        </center>
-                    </div>
+                <div class="alert alert-success">
+                    <center>
+                        <strong>No Contact Lists Found!</strong>
+                    </center>
+                </div>
                 @endif
             </div>
             <ul class="pagination pagination-primary mt-4">

@@ -248,7 +248,14 @@ class TemplateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    { }
+    { 
+        \Log::debug($id);
+        $obj=\App\Template::find($id);
+        $obj->delete();
+        echo trans('messages.templates.deleted');
+        return redirect()->action('TemplateController@index');
+
+    }
 
     /**
      * Custom sort items.
@@ -334,6 +341,7 @@ class TemplateController extends Controller
      */
     public function delete(Request $request)
     {
+        \Log::debug($request);
         $items = Template::whereIn('uid', explode(',', $request->uids));
 
         foreach ($items->get() as $item) {
@@ -357,7 +365,6 @@ class TemplateController extends Controller
     public function preview(Request $request, $id)
     {
         $template = Template::findByUid($id);
-
         // authorize
         // if (!$request->user()->customer->can('preview', $template)) {
         //     return $this->not_authorized();
@@ -392,31 +399,36 @@ class TemplateController extends Controller
     public function saveImage(Request $request, $id)
     {
         $template = Template::findByUid($id);
-
         // authorize
         // if (!$request->user()->customer->can('saveImage', $template)) {
-        //     return $this->not_authorized();
-        // }
-
-        $upload_loca = 'app/email_templates/';
-        $upload_path = storage_path($upload_loca);
-        if (!file_exists($upload_path)) {
-            mkdir($upload_path, 0777, true);
+            //     return $this->not_authorized();
+            // }
+            
+            $upload_loca = 'app/email_templates/';
+            $upload_path = storage_path($upload_loca);
+            if (!file_exists($upload_path)) {
+                mkdir($upload_path, 0777, true);
         }
         $filename = 'screenshot-' . $id . '.png';
-
+        
+        \Log::debug("1");
         // remove "data:image/png;base64,"
         $uri = substr($request->data, strpos($request->data, ',') + 1);
-
+        
+        \Log::debug("2");
         // save to file
         file_put_contents($upload_path . $filename, base64_decode($uri));
-
+        
+        \Log::debug("3");
         // create thumbnails
+        \Log::debug("4");
         $img = \Image::make($upload_path . $filename);
         $img->fit(178, 200)->save($upload_path . $filename . '.thumb.jpg');
-
+        
+        \Log::debug("5");
         // save
         $template->image = $upload_loca . $filename;
+        \Log::debug($template->image);
         $template->save();
     }
 

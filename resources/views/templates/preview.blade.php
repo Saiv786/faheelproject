@@ -9,7 +9,7 @@
             {
                 var img = canvas.toDataURL()
                 $(".saving").show();
-                $.post('{{ action('TemplateController@saveImage', $template->uid) }}', {data: img, '_token': '{!! csrf_token() !!}'}, function (file) {
+                $.post("{{ action('TemplateController@saveImage', ['uid'=>$template->uid]) }}", {data: img, '_token': '{!! csrf_token() !!}'}, function (file) {
                     $(".saving").hide();
                     if (opener) {
                         opener.tableFilterAll();

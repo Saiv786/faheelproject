@@ -25,7 +25,9 @@ Route::group(['middleware' => 'auth'], function () {
         return view('campaigns.index');
     })->name('campaigns');
     Route::get('/contacts', 'ContactListController@index')->name('contacts');
-    Route::resource('contacts','ContactListController')->except(['index']);
+    Route::resource('contacts', 'ContactListController')->except(['index']);
+    Route::post('contacts/store_contact', 'ContactListController@storeContact');
+    Route::get('contacts/view_contact/{id}', 'ContactListController@showContacts');
     Route::get('/schedules', function () {
         return view('schedules.index');
     })->name('schedules');

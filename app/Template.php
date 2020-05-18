@@ -67,10 +67,10 @@ class Template extends Model
             $item->custom_order = 0;
         });
 
-        static::deleted(function ($item) {
-            $uploaded_dir = $item->getUploadDir();
-            \Acelle\Library\Tool::xdelete($uploaded_dir);
-        });
+        // static::deleted(function ($item) {
+        //     $uploaded_dir = $item->getUploadDir();
+        //     \Acelle\Library\Tool::xdelete($uploaded_dir);
+        // });
     }
 
     /**

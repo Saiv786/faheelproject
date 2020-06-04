@@ -4,6 +4,7 @@
 @section('page-style')
 <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" />
 <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @stop
 @section('content')
 
@@ -15,20 +16,22 @@
                 <h2><strong>Schedules</strong> Create</h2>
             </div>
             <div class="body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="{{ action('ScheduleController@store') }}" method="POST">
+                    {{ csrf_field() }}
                     <div class="row clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                             <label for="email_address_2">Schedule Name</label>
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="text" id="email_address_2" class="form-control" placeholder="Enter Schedule Name">
+                                <input type="text" class="form-control" placeholder="Enter Schedule Name" id='name'>
                             </div>
                         </div>
                     </div>
                     <div class="row clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                             <label for="password_2">Schedule Type</label>
+                            <input type="hidden" id="type" class="form-control" placeholder="">
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="custom-control custom-radio custom-control-inline">
@@ -36,126 +39,186 @@
                                 <label class="custom-control-label" for="customRadioInline1">One Time</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                <input type="radio" id="customRadioInline2" name="customRadioInline2" class="custom-control-input">
                                 <label class="custom-control-label" for="customRadioInline2">Recurring</label>
                             </div>
                         </div>
                     </div>
                     </br>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
-                            <label for="email_address_2">Repeat Every</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8 row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="number" id="email_address_2" class="form-control" placeholder="No. of">
+                    <div id="recurring" class="hide">
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                <label for="email_address_2">Repeat Every</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="number" id="recurr_frequency" class="form-control" placeholder="No. of">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control show-tick" id="recurr_type">
+                                            <option value="">-- Please select --</option>
+                                            <option value="days">Days</option>
+                                            <option value="weeks">Weeks</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <select class="form-control show-tick">
-                                        <option value="">-- Please select --</option>
-                                        <option value="10">Days</option>
-                                        <option value="20">Weeks</option>
-                                    </select>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                <label for="password_2">Frequency</label>
+                                <input type="hidden" id="is_once" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="frequency_once" name="frequency_once" class="custom-control-input">
+                                    <label class="custom-control-label" for="frequency_once">Occur Once</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="frequency_every" name="frequency_every" class="custom-control-input">
+                                    <label class="custom-control-label" for="frequency_every">Occur Every</label>
+                                </div>
+                            </div>
+                        </div>
+                        </br>
+                        <div id="every">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                    <label for="occur_every_number">Occur Every</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="number" id="occur_every_number" class="form-control" placeholder="No. of">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <select class="form-control show-tick" id="occur_every_type">
+                                                <option value="">-- Please select --</option>
+                                                <option value="hour">Hour</option>
+                                                <option value="minute">Minute</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="once">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                    <label for="email_address_2">Occurence Time</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+                                        </div>
+                                        <input type="text" id="occur_once_time" class="form-control timepicker" placeholder="Please choose a time...">
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                <label for="email_address_2">Start Time</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+                                    </div>
+                                    <input type="text" id="occur_every_start_time" class="form-control timepicker" placeholder="Please choose a time...">
+                                </div>
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                <label for="email_address_2">End Time</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+                                    </div>
+                                    <input type="text" id="occur_every_end_time" class="form-control timepicker" placeholder="Please choose a time...">
+                                </div>
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                <label for="email_address_2">Start Date</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+                                    </div>
+                                    <input type="text" id="recur_duration_start_date" class="form-control datetimepicker" placeholder="Please choose date & time...">
+                                </div>
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                <label for="email_address_2">End Date</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+                                    </div>
+                                    <input type="text" id="recur_duration_end_date" class="form-control datetimepicker" placeholder="Please choose date & time...">
+                                </div>
+                            </div>
+                        </div>
+                        </br>
+                    </div>
+                    <div id='one_time'>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                <label for="email_address_2">Occurence Time</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control timepicker" placeholder="Please choose a time..." id="one_time_time">
+                                </div>
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                                <label for="email_address_2">Occurence Date</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control datetimepicker" placeholder="Please choose date & time..." id="one_time_date">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
-                            <label for="password_2">Frequency</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                                <label class="custom-control-label" for="customRadioInline1">Occur Once</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                <label class="custom-control-label" for="customRadioInline2">Occur Every</label>
+                    <div class='row-clearfix'>
+                        <div class="form-group col-sm-6">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
                             </div>
                         </div>
                     </div>
-                    </br>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
-                            <label for="email_address_2">Occur Every</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8 row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="number" id="email_address_2" class="form-control" placeholder="No. of">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <select class="form-control show-tick">
-                                        <option value="">-- Please select --</option>
-                                        <option value="10">Hour</option>
-                                        <option value="20">Minute</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
-                            <label for="email_address_2">Start Time</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
-                                </div>
-                                <input type="text" class="form-control timepicker" placeholder="Please choose a time...">
-                            </div>
-                        </div>
-                    </div>
-                    </br>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
-                            <label for="email_address_2">End Time</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
-                                </div>
-                                <input type="text" class="form-control timepicker" placeholder="Please choose a time...">
-                            </div>
-                        </div>
-                    </div>
-                    </br>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
-                            <label for="email_address_2">Start Date</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
-                                </div>
-                                <input type="text" class="form-control datetimepicker" placeholder="Please choose date & time...">
-                            </div>
-                        </div>
-                    </div>
-                    </br>
-                    <div class="row clearfix">
-                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
-                            <label for="email_address_2">End Date</label>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="zmdi zmdi-calendar"></i></span>
-                                </div>
-                                <input type="text" class="form-control datetimepicker" placeholder="Please choose date & time...">
-                            </div>
-                        </div>
-                    </div>
-                    </br>
                     <div class="row clearfix">
                         <div class="col-sm-8 offset-sm-2">
                             <!-- <div class="checkbox">
@@ -174,6 +237,77 @@
         </div>
     </div>
 </div>
+<script>
+    $("#customRadioInline1").prop("checked", true);
+    $("#customRadioInline1").change(function() {
+        if (this.checked == true) {
+            $("#customRadioInline2").prop("checked", false);
+            $('#recurring').removeClass("hide");
+            $('#recurring').removeClass("show");
+            $('#recurring').addClass("hide");
+            $('#one_time').removeClass("hide");
+            $('#one_time').removeClass("show");
+            $('#one_time').addClass("show");
+            $("#type").value = 'one_time';
+        }
+    });
+    $("#customRadioInline2").change(function() {
+        if (this.checked == true) {
+            $("#customRadioInline1").prop("checked", false);
+            $("#frequency_once").prop("checked", true);
+            $("#type").value = 'recurring';
+            $('#recurring').removeClass("hide");
+            $('#recurring').removeClass("show");
+            $('#recurring').addClass("show");
+            $('#one_time').removeClass("hide");
+            $('#one_time').removeClass("show");
+            $('#one_time').addClass("hide");
+        }
+    });
+    $("#frequency_once").change(function() {
+        if (this.checked == true) {
+            $("#frequency_every").prop("checked", false);
+            $("#is_once").value = true;
+            $('#once').removeClass("hide");
+            $('#once').removeClass("show");
+            $('#once').addClass("show");
+            $('#every').removeClass("hide");
+            $('#every').removeClass("show");
+            $('#every').addClass("hide");
+        }
+    });
+    $("#frequency_every").change(function() {
+        if (this.checked == true) {
+            $("#frequency_once").prop("checked", false);
+            $("#is_once").value = false;
+            $('#every').removeClass("hide");
+            $('#every').removeClass("show");
+            $('#every').addClass("show");
+            $('#once').removeClass("hide");
+            $('#once').removeClass("show");
+            $('#once').addClass("hide");
+        }
+    });
+    $('#one_time_date').datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+    $('#one_time_time').timepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+    $('#datetimepicker1').datetimepicker();
+    // $('#one_time_date').bootstrapMaterialDatePicker({
+    //     date: false
+    // });
+</script>
+<style>
+    .hide {
+        display: none;
+    }
 
-
+    .show {
+        display: block;
+    }
+</style>
 @stop

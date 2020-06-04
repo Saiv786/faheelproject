@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', function () {
-    return view('under_construction');
+    // return view('under_construction');
     return redirect(route('login'));
 });
 Route::group(['middleware' => 'auth'], function () {
@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('campaigns');
     Route::get('/contacts', 'ContactListController@index')->name('contacts');
     Route::resource('contacts', 'ContactListController')->except(['index']);
+    Route::resource('schedules', 'ScheduleController')->except(['index']);
     Route::post('contacts/store_contact', 'ContactListController@storeContact');
     Route::get('contacts/view_contact/{id}', 'ContactListController@showContacts');
     Route::get('/schedules', function () {

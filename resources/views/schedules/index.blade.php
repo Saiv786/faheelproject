@@ -29,7 +29,7 @@
                             <td>
                                 <small>
                                     <span>
-                                       <wbr> {{$schedule['description']}} </wbr>
+                                        <wbr> {{$schedule['description']}} </wbr>
                                     </span>
                                 </small><br>
                                 <!-- <small>Cost: $215</small> -->
@@ -58,6 +58,13 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if(count($schedules)==0)
+                <div class="alert alert-success">
+                    <center>
+                        <strong>No Schedules Found!</strong>
+                    </center>
+                </div>
+                @endif
             </div>
             <ul class="pagination pagination-primary mt-4">
                 <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>

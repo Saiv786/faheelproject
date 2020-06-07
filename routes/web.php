@@ -29,9 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('schedules', 'ScheduleController')->except(['index']);
     Route::post('contacts/store_contact', 'ContactListController@storeContact');
     Route::get('contacts/view_contact/{id}', 'ContactListController@showContacts');
-    Route::get('/schedules', function () {
-        return view('schedules.index');
-    })->name('schedules');
+    Route::get('/schedules', 'ScheduleController@index')->name('schedules');
     Route::get('/schedules/create', function () {
         return view('schedules.create');
     })->name('schedules.create');

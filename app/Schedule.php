@@ -57,7 +57,7 @@ class Schedule extends Model
 	//-----------------------------------------
 	// Relations Start
 	//-----------------------------------------
-	
+
 	//-----------------------------------------
 	// Relations End
 	//-----------------------------------------
@@ -65,6 +65,83 @@ class Schedule extends Model
 	//-----------------------------------------
 	// Attributes Start
 	//-----------------------------------------
+	protected $appends=['next_run_time','description'];
+	public function getNextRunTimeAttribute()
+	{
+		$last_run=null;
+		$date = null;
+		$cron = \Cron\CronExpression::factory($this->cron);
+		$today = Carbon::today();
+
+		if ($this->type == 'one_time') {
+			$date = $cron->getNextRunDate($this->one_time_time);
+			$date = Carbon::instance($date);
+
+			if ($last_run) {
+				return null;
+			}
+
+			return $date->format('F j, Y, g:i a');
+		} else {
+			if ($today->gt($this->occur_every_end_time)) {
+				return $date;
+			}
+			if ($today->lt($this->occur_every_start_time)) {
+				$today = Carbon::parse($this->occur_every_start_time);
+			}
+
+			$ref_start = \Carbon\Carbon::parse($this->occur_every_start_time);
+			$ref_end = \Carbon\Carbon::parse($this->occur_every_end_time);
+
+			if ($ref_start->gt($this->occur_every_end_time)) {
+				return $date;
+			}
+		}
+		if (!$last_run) {
+			$last_run = Carbon::now();
+		}
+
+		$break = false;
+		do {
+			$relative = $ref_start;
+			if ($ref_start->lt($last_run)) {
+				$relative = $last_run;
+			}
+
+			$date = $cron->getNextRunDate($relative);
+			$date = Carbon::instance($date);
+
+			if ($date->lte($ref_end) || $this->is_once) {
+				$break = true;
+			}
+
+			$ref_start->addDay();
+		} while (!$break);
+
+		return $date->format('F j, Y, g:i a');
+	}
+	public function getDescriptionAttribute()
+	{
+		$description = "";
+		$timezone = request()['timezone'] ?? 'UTC';
+		if ($this->type == 'one_time') {
+			$description .= "One Time Occurance on " . \Carbon\Carbon::parse($this->one_time_time)->format(' M j, Y') . " at " . \Carbon\Carbon::parse($this->one_time_time)->format('g:i A');
+		} else if ($this->type == 'recurring') {
+			$description .= "Repeat every " . $this->recurr_frequency . " " . $this->recurr_type;
+			if ($this->occur_once_time) {
+				$description .= " at " . \Carbon\Carbon::parse($this->occur_once_time)->format('g:i A') . ", ";
+			} else {
+				$description .= " every " . $this->occur_every_number . " " . $this->occur_every_type . " between " . \Carbon\Carbon::parse($this->occur_every_start_time)->format('g:i A') . " and " . \Carbon\Carbon::parse($this->occur_every_end_time)->format('g:i A') . ". ";
+			}
+			if ($this->occur_every_start_time) {
+				$description .= "From on " . \Carbon\Carbon::parse($this->occur_every_start_time)->format(' M j, Y');
+			}
+			if ($this->occur_every_end_time) {
+				$description .= " to " . \Carbon\Carbon::parse($this->occur_every_end_time)->format(' M j, Y');
+			}
+		}
+		return $description;
+	}
 	//-----------------------------------------
 	// Attributes End
 	//-----------------------------------------
@@ -89,14 +166,14 @@ class Schedule extends Model
 		$cron_year = "*";
 
 		if ($this->type == 'one_time') {
-			$date = \Carbon\Carbon::parse($this->one_time_date);
+			// $date = \Carbon\Carbon::parse($this->one_time_date);
 			$time = \Carbon\Carbon::parse($this->one_time_time);
 
 			$cron_minute = $time->minute;
 			$cron_hours = $time->hour;
-			$cron_day = $date->day;
-			$cron_month = $date->month;
-			$cron_year = $date->year;
+			$cron_day = $time->day;
+			$cron_month = $time->month;
+			$cron_year = $time->year;
 		} else if ($this->type == 'recurring') {
 			$total_days = 0;
 			if ($this->is_once) {
@@ -143,7 +220,7 @@ class Schedule extends Model
 		$today = Carbon::today();
 
 		if ($this->type == 'one_time') {
-			$date = $cron->getNextRunDate($this->one_time_date);
+			$date = $cron->getNextRunDate($this->one_time_time);
 			$date = Carbon::instance($date);
 
 			if ($last_run) {
@@ -152,17 +229,17 @@ class Schedule extends Model
 
 			return $date;
 		} else {
-			if ($today->gt($this->recur_duration_end_date)) {
+			if ($today->gt($this->occur_every_end_time)) {
 				return $date;
 			}
-			if ($today->lt($this->recur_duration_start_date)) {
-				$today = Carbon::parse($this->recur_duration_start_date);
+			if ($today->lt($this->occur_every_start_time)) {
+				$today = Carbon::parse($this->occur_every_start_time);
 			}
 
-			$ref_start = $this->combineDateTime($today, $this->occur_every_start_time);
-			$ref_end = $this->combineDateTime($today, $this->occur_every_end_time);
+			$ref_start = \Carbon\Carbon::parse($this->occur_every_start_time);
+			$ref_end = \Carbon\Carbon::parse($this->occur_every_end_time);
 
-			if ($ref_start->gt($this->recur_duration_end_date)) {
+			if ($ref_start->gt($this->occur_every_end_time)) {
 				return $date;
 			}
 		}

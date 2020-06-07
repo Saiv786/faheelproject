@@ -38,6 +38,33 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         \Log::debug($request->all());
+        // $x=\Carbon\Carbon::parse($request['one_time_time']);
+        // \Log::debug($x);
+        $schedule=new \App\Schedule();
+        $schedule['name']=$request['name'];
+        
+        if(isset($request['customRadioInline2'])){
+            $schedule['type']= 'recurring';
+            $schedule['recurr_frequency']= $request['recurr_frequency'];
+            $schedule['recurr_type']= $request['recurr_type'];
+            if(isset($request['frequency_once'])){
+                $schedule['is_once']= true;
+                $schedule['occur_once_time']=\Carbon\Carbon::parse( $request['occur_once_time']);
+            }else{
+                $schedule['is_once']= false;
+                $schedule['occur_every_number']= $request['occur_every_number'];
+                $schedule['occur_every_type']= $request['occur_every_type'];
+            }
+            $schedule['occur_every_start_time']= $request['occur_every_start_time'];
+            $schedule['occur_every_end_time']= $request['occur_every_end_time'];
+        }else{
+            $schedule['type']= 'one_time';
+            $schedule['one_time_time'] = $request['one_time_time'];
+        }
+        $schedule['cron']=$schedule->getCronString();
+        $schedule['one_time_date']=$schedule->getNextRunTime(null);
+        $schedule->save();
+        return redirect('/schedules');
         //
         // $rules = array(
         //     'name' => 'required',

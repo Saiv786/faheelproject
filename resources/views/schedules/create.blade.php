@@ -2,9 +2,17 @@
 @section('title', 'Create')
 @section('parentPageTitle', 'Schedules')
 @section('page-style')
-<link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" />
 <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" />
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+<link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" />
+<script type="text/javascript" src="{{asset('assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
+
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
+
+
 @stop
 @section('content')
 
@@ -20,11 +28,11 @@
                     {{ csrf_field() }}
                     <div class="row clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
-                            <label for="email_address_2">Schedule Name</label>
+                            <label for="name">Schedule Name</label>
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Schedule Name" id='name'>
+                                <input type="text" class="form-control" placeholder="Enter Schedule Name" id='name' name="name">
                             </div>
                         </div>
                     </div>
@@ -53,13 +61,13 @@
                             <div class="col-lg-10 col-md-10 col-sm-8 row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="number" id="recurr_frequency" class="form-control" placeholder="No. of">
+                                        <input type="number" id="recurr_frequency" class="form-control" name="recurr_frequency" placeholder="No. of">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <select class="form-control show-tick" id="recurr_type">
-                                            <option value="">-- Please select --</option>
+                                        <select class="form-control show-tick" id="recurr_type" name="recurr_type">
+                                            <!-- <option value="">-- Please select --</option> -->
                                             <option value="days">Days</option>
                                             <option value="weeks">Weeks</option>
                                         </select>
@@ -92,13 +100,13 @@
                                 <div class="col-lg-10 col-md-10 col-sm-8 row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="number" id="occur_every_number" class="form-control" placeholder="No. of">
+                                            <input type="number" id="occur_every_number" name="occur_every_number" class="form-control" placeholder="No. of">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <select class="form-control show-tick" id="occur_every_type">
-                                                <option value="">-- Please select --</option>
+                                            <select class="form-control show-tick" id="occur_every_type" name="occur_every_type">
+                                                <!-- <option value="">-- Please select --</option> -->
                                                 <option value="hour">Hour</option>
                                                 <option value="minute">Minute</option>
                                             </select>
@@ -117,7 +125,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                         </div>
-                                        <input type="text" id="occur_once_time" class="form-control timepicker" placeholder="Please choose a time...">
+                                        <input type="text" id="occur_once_time" name="occur_once_time" class="form-control timepicker" placeholder="Please choose a time...">
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +140,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                     </div>
-                                    <input type="text" id="occur_every_start_time" class="form-control timepicker" placeholder="Please choose a time...">
+                                    <input type="text" id="occur_every_start_time" name="occur_every_start_time" class="form-control timepicker" placeholder="Please choose a time...">
                                 </div>
                             </div>
                         </div>
@@ -146,12 +154,12 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                     </div>
-                                    <input type="text" id="occur_every_end_time" class="form-control timepicker" placeholder="Please choose a time...">
+                                    <input type="text" id="occur_every_end_time" name="occur_every_end_time" class="form-control timepicker" placeholder="Please choose a time...">
                                 </div>
                             </div>
                         </div>
                         </br>
-                        <div class="row clearfix">
+                        <!-- <div class="row clearfix">
                             <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                                 <label for="email_address_2">Start Date</label>
                             </div>
@@ -178,7 +186,7 @@
                                 </div>
                             </div>
                         </div>
-                        </br>
+                        </br> -->
                     </div>
                     <div id='one_time'>
                         <div class="row clearfix">
@@ -190,11 +198,11 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="zmdi zmdi-time"></i></span>
                                     </div>
-                                    <input type="text" class="form-control timepicker" placeholder="Please choose a time..." id="one_time_time">
+                                    <input type="text" class="form-control timepicker one_time_time" placeholder="Please choose a time..." id="one_time_time" name="one_time_time">
                                 </div>
                             </div>
                         </div>
-                        </br>
+                        <!-- </br>
                         <div class="row clearfix">
                             <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                                 <label for="email_address_2">Occurence Date</label>
@@ -207,17 +215,7 @@
                                     <input type="text" class="form-control datetimepicker" placeholder="Please choose date & time..." id="one_time_date">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class='row-clearfix'>
-                        <div class="form-group col-sm-6">
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row clearfix">
                         <div class="col-sm-8 offset-sm-2">
@@ -229,7 +227,7 @@
                             </div> -->
                         </div>
                         <div class="col-sm-8 offset-sm-2 pull-right">
-                            <button type="button" style="left: 100%;" class="btn btn-raised btn-primary btn-round waves-effect">Submit</button>
+                            <button type="submit" style="left: 100%;" class="btn btn-raised btn-primary btn-round waves-effect">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -262,6 +260,15 @@
             $('#one_time').removeClass("hide");
             $('#one_time').removeClass("show");
             $('#one_time').addClass("hide");
+            $("#frequency_every").prop("checked", false);
+            $("#is_once").value = true;
+
+            $('#once').removeClass("hide");
+            $('#once').removeClass("show");
+            $('#once').addClass("show");
+            $('#every').removeClass("hide");
+            $('#every').removeClass("show");
+            $('#every').addClass("hide");
         }
     });
     $("#frequency_once").change(function() {
@@ -288,18 +295,46 @@
             $('#once').addClass("hide");
         }
     });
-    $('#one_time_date').datepicker({
-        changeMonth: true,
-        changeYear: true
-    });
-    $('#one_time_time').timepicker({
-        changeMonth: true,
-        changeYear: true
-    });
-    $('#datetimepicker1').datetimepicker();
-    // $('#one_time_date').bootstrapMaterialDatePicker({
-    //     date: false
+    // $('#one_time_date').datepicker({
+    //     changeMonth: true,
+    //     changeYear: true
     // });
+    // $('#one_time_date').bootstrapMaterialDatePicker({
+    //     format: 'dddd DD MMMM YYYY',
+    //     clearButton: true,
+    //     nowButton: true,
+    //     weekStart: 1,
+    //     time: false
+    // });
+    // $('#date one_time_timetimepicker1').datetimepicker();
+    $('.one_time_time').bootstrapMaterialDatePicker({
+        format: 'YYYY-MM-DD HH:mm',
+        // format: 'dddd DD MMMM YYYY - HH:mm',
+        clearButton: true,
+        switchOnClick: true,
+        weekStart: 1
+    });
+    $('#occur_every_start_time').bootstrapMaterialDatePicker({
+        format: 'YYYY-MM-DD HH:mm',
+        // format: 'dddd DD MMMM YYYY - HH:mm',
+        clearButton: true,
+        switchOnClick: true,
+        weekStart: 1
+    });
+    $('#occur_every_end_time').bootstrapMaterialDatePicker({
+        format: 'YYYY-MM-DD HH:mm',
+        // format: 'dddd DD MMMM YYYY - HH:mm',
+        clearButton: true,
+        switchOnClick: true,
+        weekStart: 1
+    });
+    $('#occur_once_time').bootstrapMaterialDatePicker({
+        format: 'HH:mm',
+        clearButton: true,
+        switchOnClick: true,
+        weekStart: 1,
+        date: false
+    });
 </script>
 <style>
     .hide {

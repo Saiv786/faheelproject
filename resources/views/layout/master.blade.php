@@ -13,16 +13,22 @@
     @yield('meta')
     {{-- See https://laravel.com/docs/5.5/blade#stacks for usage --}}
     @stack('before-styles')
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
     <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('assets/css/core.min.css')}}"> -->
+    
     @if (trim($__env->yieldContent('page-style')))
     @yield('page-style')
     @endif
     <!-- Custom Css -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"> -->
     @stack('after-styles')
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </head>
 <?php

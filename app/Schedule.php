@@ -65,7 +65,7 @@ class Schedule extends Model
 	//-----------------------------------------
 	// Attributes Start
 	//-----------------------------------------
-	protected $appends=['next_run_time','description'];
+	protected $appends=['next_run_time','description','status','status_class'];
 	public function getNextRunTimeAttribute()
 	{
 		$last_run=null;
@@ -141,6 +141,20 @@ class Schedule extends Model
 			}
 		}
 		return $description;
+	}
+	public function getStatusAttribute(){
+		if($this->is_enabled){
+			return 'Running';
+		}else{
+			return 'Stopped';
+		}
+	}
+	public function getStatusClassAttribute(){
+		if($this->is_enabled){
+			return 'badge-success';
+		}else{
+			return 'badge-danger';
+		}
 	}
 	//-----------------------------------------
 	// Attributes End

@@ -17,6 +17,7 @@
                             <th class="hidden-md-down" width="150px">From</th>
                             <th class="hidden-md-down" width="150px">To</th>
                             <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,22 +39,21 @@
                                 {{$schedule['next_run_time']}}
                             </td>
                             <td class="hidden-md-down">
-                                05-April-2020 05:00 A.M
-
-                                <!-- <div class="progress">
-                                        <div class="progress-bar l-blue" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
-                                    </div>
-                                    <small>Rate: 50%</small> -->
+                                {{\Carbon\Carbon::parse($schedule['occur_every_start_time'])->format('F j, Y, g:i a')}}
                             </td>
                             <td class="hidden-md-down">
-                                30-April-2020 05:00 A.M
-
-                                <!-- <div class="progress">
-                                        <div class="progress-bar l-blue" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                                    </div>
-                                    <small>Rate: 80%</small> -->
+                                {{\Carbon\Carbon::parse($schedule['occur_every_end_time'])->format('F j, Y, g:i a')}}
                             </td>
-                            <td><span class="badge badge-success">Running</span></td>
+                            <td><span class="badge {{$schedule['status_class']}}">{{$schedule['status']}}</span></td>
+                            <td>
+                                <form action="{{ url('/schedules', ['id' => $schedule->id]) }}" method="post">
+                                    <button type="submit" class="btn btn-danger btn-icon">
+                                        <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-delete"></i>
+                                    </button>
+                                    {!! method_field('delete') !!}
+                                    {!! csrf_field() !!}
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -37,9 +37,6 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        \Log::debug($request->all());
-        // $x=\Carbon\Carbon::parse($request['one_time_time']);
-        // \Log::debug($x);
         $schedule=new \App\Schedule();
         $schedule['name']=$request['name'];
         
@@ -84,32 +81,6 @@ class ScheduleController extends Controller
         //     //throw $th;
         // }
     }
-    public function storeContact(Request $request)
-    {
-        //
-        // $rules = array(
-        //     'first_name' => 'required',
-        //     'last_name' => 'required',
-        //     'email' => 'required',
-        //     'list_contact_id' => 'required',
-        // );
-
-        // $this->validate($request, $rules);
-        // try {
-        //     $contact = new \App\Contact();
-        //     $contact['first_name'] = $request['first_name'];
-        //     $contact['last_name'] = $request['last_name'];
-        //     $contact['email'] = $request['email'];
-        //     $contact['contact_list_id'] = $request['list_contact_id'];
-        //     $contact->save();
-        // } catch (\Throwable $e) {
-        //     \Log::error($e);
-            
-        //     //throw $th;
-        // }
-        return redirect('/schedules');
-    }
-
     /**
      * Display the specified resource.
      *
@@ -121,12 +92,6 @@ class ScheduleController extends Controller
         //
         // $obj= \App\ContactList::find($id);
         // return view('contacts.show')->with('list',$obj);
-    }
-    public function showContacts($id)
-    {
-        //
-        // $obj= \App\ContactList::find($id);
-        // return view('contacts.showContacts')->with('list',$obj)->with('contacts',$obj->contacts);
     }
 
     /**
@@ -180,11 +145,8 @@ class ScheduleController extends Controller
      */
     public function destroy($id)
     {
-        //
-        // $obj=\App\ContactList::find($id);
-        // $obj->contacts()->delete();
-        // $obj->delete();
+        $obj=\App\Schedule::find($id);
+        $obj->delete();
         return redirect('/schedules');
-
     }
 }

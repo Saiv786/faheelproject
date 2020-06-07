@@ -5,6 +5,9 @@
 @section('content')
 <div class="row clearfix">
     <div class="col-md-12 col-sm-12 col-xs-12">
+        <a href="{{ route('contacts') }}" type="button" class="btn bg-info-800 btn-primary">
+            <i class="zmdi zmdi-arrow-left"></i> {{ trans('messages.go_back') }}
+        </a>
         <div class="card project_list">
             <div class="table-responsive">
                 <table class="table table-hover c_table theme-color">

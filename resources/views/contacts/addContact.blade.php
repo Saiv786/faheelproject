@@ -42,7 +42,29 @@
                             <label for="description">Contact E-mail<span class="text-blush"> *</span></label>
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter E-mail" required>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Enter E-mail" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">Phone No.<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="text" id="phone_no" name="phone_no" class="form-control" placeholder="Enter Phone No." required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">Address<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address" required>
+                            </div>
                         </div>
                     </div>
                     </br>

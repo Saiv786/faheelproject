@@ -42,6 +42,10 @@ class Schedule extends Model
 		'cron' => 'string',
 	];
 
+	protected $hidden = [
+		'_token'
+	];
+
 	//-----------------------------------------
 	// Traits Start
 	//-----------------------------------------

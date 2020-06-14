@@ -13,6 +13,8 @@ class Contact extends Model
 		'first_name',
 		'last_name',
 		'email',
+		'phone_no',
+		'address',
 		'contact_list_id',
 	];
 
@@ -20,6 +22,8 @@ class Contact extends Model
 		'first_name'=>'string',
 		'last_name'=>'string',
 		'email'=>'string',
+		'phone_no'=>'string',
+		'address'=>'string',
 		'contact_list_id'=>'integer',
 	];
 

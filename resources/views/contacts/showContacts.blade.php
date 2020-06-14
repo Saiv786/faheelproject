@@ -15,6 +15,8 @@
                         <tr>
                             <th style="width:50px;">First Name</th>
                             <th>Last Name</th>
+                            <th>Phone No.</th>
+                            <th>Address</th>
                             <th class="hidden-md-down">Email</th>
                             <!-- <th>Actions</th> -->
                         </tr>
@@ -25,6 +27,8 @@
                             <td>{{$contact->first_name}}<br>
                             </td>
                             <td>{{$contact->last_name}}<br>
+                            <td>{{$contact->phone_no}}<br>
+                            <td>{{$contact->address}}<br>
                             </td>
                             <td>
                                 <strong>{{$contact->email}}</strong><br>

@@ -63,6 +63,8 @@ class ContactListController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
+            'phone_no' => 'required',
+            'address' => 'required',
             'list_contact_id' => 'required',
         );
 
@@ -72,6 +74,8 @@ class ContactListController extends Controller
             $contact['first_name'] = $request['first_name'];
             $contact['last_name'] = $request['last_name'];
             $contact['email'] = $request['email'];
+            $contact['phone_no'] = $request['phone_no'];
+            $contact['address'] = $request['address'];
             $contact['contact_list_id'] = $request['list_contact_id'];
             $contact->save();
         } catch (\Throwable $e) {

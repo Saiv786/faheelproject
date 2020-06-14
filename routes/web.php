@@ -15,9 +15,12 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/profile', function () {
-        return view('pages.profile');
-    })->name('profile');
+    // Route::get('/profile', function () {
+    //     return view('pages.profile');
+    // })->name('profile');
+
+    Route::get('/profile', 'UserProfileController@getAuthUser')->name('profile');
+    Route::post('/profile', 'UserProfileController@updateAuthUser');
     Route::get('/dashboard', function () {
         return view('dashboard.index');
     })->name('dashboard');

@@ -24,7 +24,7 @@
                         @foreach($schedules as $schedule)
                         <tr>
                             <td>
-                                <a class="single-user-name" href="javascript:void(0);">{{$schedule['name']}}</a><br>
+                                <a class="single-user-name" href="{{ action('ScheduleController@show',['id'=>$schedule->id]) }}">{{$schedule['name']}}</a><br>
                                 <!-- <small>Project Lead</small> -->
                             </td>
                             <td>

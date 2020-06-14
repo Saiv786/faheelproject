@@ -40,66 +40,80 @@
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="body">
-                <small class="text-muted">Email address: </small>
-                <p>michael_dorsey@gmail.com</p>
-                <hr>
-                <small class="text-muted">Phone: </small>
-                <p>+ 202-555-0191</p>
-                <hr>
-                <ul class="list-unstyled">
-                    <li>
-                        <div>Photoshop</div>
-                        <div class="progress m-b-20">
-                            <div class="progress-bar l-blue " role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%"> <span class="sr-only">62% Complete</span> </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div>Wordpress</div>
-                        <div class="progress m-b-20">
-                            <div class="progress-bar l-green " role="progressbar" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100" style="width: 56%"> <span class="sr-only">87% Complete</span> </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div>HTML 5</div>
-                        <div class="progress m-b-20">
-                            <div class="progress-bar l-amber" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%"> <span class="sr-only">32% Complete</span> </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div>Angular</div>
-                        <div class="progress m-b-20">
-                            <div class="progress-bar l-blush" role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100" style="width: 43%"> <span class="sr-only">56% Complete</span> </div>
-                        </div>
-                    </li>
-                </ul>
-                <span>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</span>
-            </div>
-        </div>
     </div>
     <div class="col-lg-8 col-md-12">
         <div class="card">
             <div class="body">
-                <div id="calendar"></div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="header">
-                <h2><strong>Media</strong> Gallery</h2>
-            </div>
-            <div class="body">
-                <p>All pictures taken from <a href="https://pexels.com/" target="_blank">pexels.com</a></p>
-                <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-30"> <a href="{{asset('assets/images/image-gallery/1.jpg')}}"> <img class="img-fluid img-thumbnail" src="{{asset('assets/images/image-gallery/1.jpg')}}" alt=""> </a> </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-30"> <a href="{{asset('assets/images/image-gallery/2.jpg')}}"> <img class="img-fluid img-thumbnail" src="{{asset('assets/images/image-gallery/2.jpg')}}" alt=""> </a> </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-30"> <a href="{{asset('assets/images/image-gallery/3.jpg')}}"> <img class="img-fluid img-thumbnail" src="{{asset('assets/images/image-gallery/3.jpg')}}" alt=""> </a> </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-30"> <a href="{{asset('assets/images/image-gallery/4.jpg')}}"> <img class="img-fluid img-thumbnail" src="{{asset('assets/images/image-gallery/4.jpg')}}" alt=""> </a> </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-30"> <a href="{{asset('assets/images/image-gallery/5.jpg')}}"> <img class="img-fluid img-thumbnail" src="{{asset('assets/images/image-gallery/5.jpg')}}" alt=""> </a> </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-30"> <a href="{{asset('assets/images/image-gallery/6.jpg')}}"> <img class="img-fluid img-thumbnail" src="{{asset('assets/images/image-gallery/6.jpg')}}" alt=""> </a> </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-30"> <a href="{{asset('assets/images/image-gallery/7.jpg')}}"> <img class="img-fluid img-thumbnail" src="{{asset('assets/images/image-gallery/7.jpg')}}" alt=""> </a> </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-30"> <a href="{{asset('assets/images/image-gallery/8.jpg')}}"> <img class="img-fluid img-thumbnail" src="{{asset('assets/images/image-gallery/8.jpg')}}" alt=""> </a> </div>
-                </div>
+                <form class="form-horizontal" action="{{ action('UserProfileController@updateAuthUser') }}" method="POST">
+                    {{ csrf_field() }}
+                <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">User Name<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="text" value="{{$user['name']}}" id="name" name="name" class="form-control" placeholder="Enter List Name" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">Email<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="email" value="{{$user['email']}}" id="email" name="email" class="form-control" placeholder="Enter Email Address" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">Contact No.<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="text" value="{{$user['contact_no']}}" id="contact_no" name="contact_no" class="form-control" placeholder="Enter Contact No." required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">Address<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="text" value="{{$user['address']}}" id="address" name="address" class="form-control" placeholder="Enter Address" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">Password<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="password" value="{{$user['password']}}"  id="name" name="name" class="form-control" placeholder="Enter Password" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">Confirmed Password<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="password" value="{{$user['password']}}"  id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Enter Confirmed Password" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-8 offset-sm-2">
+                        </div>
+                        <div class="col-sm-8 offset-sm-2 pull-right">
+                            <button type="submit" style="left: 100%;" class="btn btn-raised btn-primary btn-round waves-effect" value="submit">Update</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

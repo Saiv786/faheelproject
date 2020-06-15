@@ -29,6 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('campaigns');
     Route::get('/contacts', 'ContactListController@index')->name('contacts');
     Route::resource('contacts', 'ContactListController')->except(['index']);
+
+    Route::resource('Campaigns', 'CampaignController')->except(['index']);
+    Route::get('/Campaigns', 'CampaignController@index')->name('campaigns');
+    
     Route::resource('schedules', 'ScheduleController')->except(['index']);
     Route::post('contacts/store_contact', 'ContactListController@storeContact');
     Route::get('contacts/view_contact/{id}', 'ContactListController@showContacts');

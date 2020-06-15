@@ -3,35 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class UserProfileController extends Controller
 {
  	public function getAuthUser()
   	{
   		$user = \Auth::user();
-  		// $user['password'] = Crypt::decryptString($use['password']);
+  		\Log::info('getAuthUser');
+  		// \Log::info(decrypt($user->password));
+  		\Log::info($user->getOriginal('password'));
         return view('pages.profile')->with('user',$user);
   	}
 
   	public function updateAuthUser(Request $request)
-  	  	{
-  	  		$user = \App\User::find(\Auth::id());
-  	  		\Log::debug('in AtuthUser Upate Method');
-  	  		\Log::debug($user);
-  	  		$this->validate(request(), [
-            	'name' => 'required',
-            	'contact_no' => 'required',
-            	'email' => 'required|email|unique:users',
-            	'password' => 'required|min:8|confirmed'
-        	]);
+  	{
+  		$user = \App\User::find(\Auth::id());
 
-        	$user->name = $request['name'];
-        	$user->email = $request['email'];
-        	$user->email = $request['contact_no'];
-        	$user->email = $request['address'];
-        	$user->password = bcrypt($request['password']);
+	 //  		$this->validate(request(), [
+	 //    	'name' => 'required',
+	 //    	'contact_no' => 'required',
+	 //    	'email' => 'required|email|unique:users',
+	 //    	'password' => 'required|min:8|confirmed',
+	 //  		'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+		// ]);
 
-        	$user->save();
-            return redirect('/profile');
-  	  	}  	
+  	$cover = request()->image_url;
+  	if($cover){
+    	$extension = $cover->getClientOriginalExtension();
+    	Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover)); 
+  	}
+
+	$user['name'] = $request['name'];
+	$user['email'] = $request['email'];
+	$user['contact_no'] = $request['contact_no'];
+	$user['address'] = $request['address'];
+	$user['password'] = bcrypt($request['password']);
+	$user['image_url'] = $cover ? $cover->getFilename().'.'.$extension : $user->image_url;
+
+	$user->save();
+    return redirect('/profile');
+  	}  	
 }

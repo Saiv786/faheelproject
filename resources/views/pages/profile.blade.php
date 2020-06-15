@@ -10,9 +10,9 @@
         <div class="card mcard_3">
             <div class="body">
                 @if(isset(Auth::user()->image_url))
-                <a href="profile.html"><img src="{{Auth::user()->image_url}}" class="rounded-circle shadow " alt="profile-image"></a>
+                <a href=""><img src="{{Auth::user()->image_url}}" class="rounded-circle shadow " alt="profile-image"></a>
                 @else
-                <a href="profile.html"><img src="{{asset('assets/images/default.png')}}" class="rounded-circle shadow " alt="profile-image"></a>
+                <a href=""><img src="{{asset('assets/images/default.png')}}" class="rounded-circle shadow " alt="profile-image"></a>
 
                 @endif
                 <h4 class="m-t-10">{{Auth::user()->name ?? null}}</h4>
@@ -23,19 +23,8 @@
                             <li><a title="twitter" href="javascript:void(0);"><i class="zmdi zmdi-twitter"></i></a></li>
                             <li><a title="instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram"></i></a></li>
                         </ul>
-                        <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                    </div>
-                    <div class="col-4">
-                        <small>Following</small>
-                        <h5>852</h5>
-                    </div>
-                    <div class="col-4">
-                        <small>Followers</small>
-                        <h5>13k</h5>
-                    </div>
-                    <div class="col-4">
-                        <small>Post</small>
-                        <h5>234</h5>
+                        <p class="text-muted">{{$user['email']}}</p>
+                        <p class="text-muted">{{$user['address']}}</p>
                     </div>
                 </div>
             </div>
@@ -44,9 +33,18 @@
     <div class="col-lg-8 col-md-12">
         <div class="card">
             <div class="body">
-                <form class="form-horizontal" action="{{ action('UserProfileController@updateAuthUser') }}" method="POST">
+                <form class="form-horizontal" action="{{ action('UserProfileController@updateAuthUser') }}" accept-charset="utf-8" enctype="multipart/form-data" method="POST">
                     {{ csrf_field() }}
                 <div class="row clearfix">
+                        <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
+                            <label for="name">Profile Pic<span class="text-blush"> *</span></label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group">
+                                <input type="file" value="{{$user['image_url']}}" id="image_url" name="image_url" class="form-control">
+                            </div>
+                        </div>
+                    </div><div class="row clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                             <label for="name">User Name<span class="text-blush"> *</span></label>
                         </div>
@@ -92,7 +90,7 @@
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="password" value="{{$user['password']}}"  id="name" name="name" class="form-control" placeholder="Enter Password" required>
+                                <input type="password" value="{{$user['password']}}"  id="password" name="password" class="form-control" placeholder="Enter Password" required>
                             </div>
                         </div>
                     </div>

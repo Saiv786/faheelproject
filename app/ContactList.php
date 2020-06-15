@@ -38,6 +38,10 @@ class ContactList extends Model
 	{
 		return $this->hasMany(\App\Contact::class);
 	}
+	public function compaign()
+	{
+		return $this->hasMany(\App\Compaign::class);
+	}
 	//-----------------------------------------
 	// Relations End
 	//-----------------------------------------

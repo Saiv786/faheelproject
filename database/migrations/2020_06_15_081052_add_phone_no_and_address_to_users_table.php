@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddVotesToUsersTable extends Migration
+class AddPhoneNoAndAddressToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddVotesToUsersTable extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             $table->string('phone_no')->nullable();
-            $table->text('address')->nullable();
+            $table->string('address')->nullable();
         });
     }
 

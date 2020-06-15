@@ -51,30 +51,33 @@
 <div class="row clearfix">
     <!-- <button class="btn btn-success " type="button"><i class="zmdi zmdi zmdi-plus"> Add New</i></button> -->
     <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="{{ action('TemplateController@buildSelect') }}" type="button" class="btn bg-info-800 btn-success">
+            <a href="{{ action('CampaignController@create') }}" type="button" class="btn bg-info-800 btn-success">
                 <i class="icon icon-plus2"></i> {{ trans('messages.create') }}
             </a>
         <div class="card project_list">
             <div class="table-responsive">
-                <table class="table table-hover c_table">
+                <table class="table table-hover c_table theme-color">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Title</th>
-                            <th>Created by</th>
-                            <th>Last Sent</th>
-                            <th>Status</th>
+                            <th>Name</th>
+                            <th>Subject</th>
+                            <th>From Name</th>
+                            <th>From Email</th>
+                            <th>Reply To</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($campaigns as $campaign)
                         <tr>
-                            <td><strong>A1</strong></td>
-                            <td>All Contacts</td>
-                            <td>Super Admin</td>
-                            <td>19 April 2020</td>
-                            <td><span class="badge badge-warning">In Progress</span></td>
+                            <td>
+                                <a class="single-user-name" href="{{ action('CampaignController@show',['id'=>$campaign->id]) }}">{{$campaign->name}}</a>
+                            </td>
+                            <td>{{$campaign->subject}}</td>
+                            <td>{{$campaign->from_name}}</td>
+                            <td>{{$campaign->from_email}}</td>
+                            <td>{{$campaign->reply_to}}</td>
                         </tr>
-
+                        @endforeach
                     </tbody>
                 </table>
             </div>

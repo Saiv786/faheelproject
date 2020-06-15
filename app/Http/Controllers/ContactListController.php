@@ -94,7 +94,6 @@ class ContactListController extends Controller
      */
     public function show($id)
     {
-        //
         $obj= \App\ContactList::find($id);
         return view('contacts.show')->with('list',$obj);
     }

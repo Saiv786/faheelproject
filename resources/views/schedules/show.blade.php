@@ -69,8 +69,8 @@
                                     <div class="form-group">
                                         <select class="form-control show-tick" id="recurr_type" name="recurr_type">
                                             <!-- <option value="">-- Please select --</option> -->
-                                            <option {{$schedule->recurr_type == 'weekd' ? "selected" : ""}} value="days">Days</option>
-                                            <option {{$schedule->recurr_type == 'days' ? "selected" : ""}} value="weeks">Weeks</option>
+                                            <option {{$schedule->recurr_type == 'days' ? "selected" : ""}} value="days">Days</option>
+                                            <option {{$schedule->recurr_type == 'weeks' ? "selected" : ""}} value="weeks">Weeks</option>
                                         </select>
                                     </div>
                                 </div>
@@ -108,8 +108,8 @@
                                         <div class="form-group">
                                             <select class="form-control show-tick" id="occur_every_type" name="occur_every_type">
                                                 <!-- <option value="">-- Please select --</option> -->
-                                                <option {{$schedule->recurr_type == 'days' ? "selected" : ""}} value="hour">Hour</option>
-                                                <option {{$schedule->recurr_type == 'minute' ? "selected" : ""}} value="minute">Minute</option>
+                                                <option {{$schedule->occur_every_type == 'days' ? "selected" : ""}} value="hour">Hour</option>
+                                                <option {{$schedule->occur_every_type == 'minute' ? "selected" : ""}} value="minute">Minute</option>
                                             </select>
                                         </div>
                                     </div>
@@ -239,24 +239,23 @@
 <script>
     // $("#customRadioInline1").prop("checked", true);
     var schedule = {!! $schedule !!};
-    console.log('in Show of Edit of Schedules');
-    console.log(schedule);
     if(schedule.type == "one_time"){
-        console.log('One condition');
         this.one_time();
     }
     else if(schedule.type == "recurring"){
-        console.log('Two condition');
         this.recurring();
     }
     if(schedule.is_once == true){
         this.frequency_once();
+
     }
     else if(schedule.is_once == false){
         this.frequency_every();
+
     }
     function frequency_once() {
             $("#frequency_every").prop("checked", false);
+            $("#frequency_once").prop("checked", true);
             $("#is_once").value = true;
             $('#once').removeClass("hide");
             $('#once').removeClass("show");
@@ -266,7 +265,8 @@
             $('#every').addClass("hide");
     }
     function frequency_every() {
-        $("#frequency_once").prop("checked", false);
+            $("#frequency_once").prop("checked", false);
+            $("#frequency_every").prop("checked", true);
             $("#is_once").value = false;
             $('#every').removeClass("hide");
             $('#every').removeClass("show");

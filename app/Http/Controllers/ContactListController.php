@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 
 class ContactListController extends Controller
 {
@@ -37,28 +38,33 @@ class ContactListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         $rules = array(
             'name' => 'required',
             'description' => 'required',
         );
-
         $this->validate($request, $rules);
+
         try {
+
             $list = new \App\ContactList();
             $list['name'] = $request['name'];
             $list['description'] = $request['description'];
+            $list['custom_fields'] = $request['custom_fields'];
             $list->save();
+
             return redirect('/contacts');
         } catch (\Throwable $e) {
             \Log::error($e);
-
             //throw $th;
         }
     }
     public function storeContact(Request $request)
     {
-        //
+            
+        \Log::info('storeContact');
+        \Log::info($request);
+
         $rules = array(
             'first_name' => 'required',
             'last_name' => 'required',
@@ -77,6 +83,7 @@ class ContactListController extends Controller
             $contact['phone_no'] = $request['phone_no'];
             $contact['address'] = $request['address'];
             $contact['contact_list_id'] = $request['list_contact_id'];
+            $contact['fields'] = $request;
             $contact->save();
         } catch (\Throwable $e) {
             \Log::error($e);

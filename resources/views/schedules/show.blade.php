@@ -276,7 +276,6 @@
             $('#once').addClass("hide");
     }
     function one_time(){
-        console.log('calling One');
             $("#customRadioInline2").prop("checked", false);
             $('#recurring').removeClass("hide");
             $('#recurring').removeClass("show");

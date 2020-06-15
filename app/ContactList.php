@@ -12,11 +12,13 @@ class ContactList extends Model
 	public $fillable = [
 		'name',
 		'description',
+		'custom_fields'
 	];
 	
 	protected $casts = [
 		'name'=>'string',
 		'description'=>'string',
+		'custom_fields'=>'array',
 	];
 	
 	//-----------------------------------------

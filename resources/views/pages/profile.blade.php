@@ -9,13 +9,13 @@
     <div class="col-lg-4 col-md-12">
         <div class="card mcard_3">
             <div class="body">
-                @if(isset(Auth::user()->image_url))
-                <a href=""><img src="{{Auth::user()->image_url}}" class="rounded-circle shadow " alt="profile-image"></a>
+                @if(isset(\Auth::user()->image_url))
+                <a href=""><img src="{{\Auth::user()->image_url}}" class="rounded-circle shadow " alt="profile-image"></a>
                 @else
                 <a href=""><img src="{{asset('assets/images/default.png')}}" class="rounded-circle shadow " alt="profile-image"></a>
 
                 @endif
-                <h4 class="m-t-10">{{Auth::user()->name ?? null}}</h4>
+                <h4 class="m-t-10">{{\Auth::user()->name ?? null}}</h4>
                 <div class="row">
                     <div class="col-12">
                         <ul class="social-links list-unstyled">
@@ -23,8 +23,8 @@
                             <li><a title="twitter" href="javascript:void(0);"><i class="zmdi zmdi-twitter"></i></a></li>
                             <li><a title="instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram"></i></a></li>
                         </ul>
-                        <p class="text-muted">{{$user['email']}}</p>
-                        <p class="text-muted">{{$user['address']}}</p>
+                        <p class="text-muted">{{\Auth::user()['email']}}</p>
+                        <p class="text-muted">{{\Auth::user()['address']}}</p>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="file" value="{{$user['image_url']}}" id="image_url" name="image_url" class="form-control">
+                                <input type="file" value="{{\Auth::user()['image_url']}}" id="image_url" name="image_url" class="form-control">
                             </div>
                         </div>
                     </div><div class="row clearfix">
@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="text" value="{{$user['name']}}" id="name" name="name" class="form-control" placeholder="Enter List Name" required>
+                                <input type="text" value="{{\Auth::user()['name']}}" id="name" name="name" class="form-control" placeholder="Enter List Name" required>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="email" value="{{$user['email']}}" id="email" name="email" class="form-control" placeholder="Enter Email Address" required>
+                                <input type="email" value="{{\Auth::user()['email']}}" id="email" name="email" class="form-control" placeholder="Enter Email Address" required>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="text" value="{{$user['contact_no']}}" id="contact_no" name="contact_no" class="form-control" placeholder="Enter Contact No." required>
+                                <input type="text" value="{{\Auth::user()['contact_no']}}" id="contact_no" name="contact_no" class="form-control" placeholder="Enter Contact No." required>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="text" value="{{$user['address']}}" id="address" name="address" class="form-control" placeholder="Enter Address" required>
+                                <input type="text" value="{{\Auth::user()['address']}}" id="address" name="address" class="form-control" placeholder="Enter Address" required>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="password" value="{{$user['password']}}"  id="password" name="password" class="form-control" placeholder="Enter Password" required>
+                                <input type="password" value=""  id="password" name="password" class="form-control" placeholder="Enter Password" required>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="form-group">
-                                <input type="password" value="{{$user['password']}}"  id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Enter Confirmed Password" required>
+                                <input type="password" value=""  id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Enter Confirmed Password" required>
                             </div>
                         </div>
                     </div>

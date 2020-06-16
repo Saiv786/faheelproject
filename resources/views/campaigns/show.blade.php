@@ -15,7 +15,7 @@
                 <h2><strong>Campaign</strong> Create</h2>
             </div>
             <div class="body">
-                <form class="form-horizontal" action="{{ action('CampaignController@update',['id'=>$list->id]) }}" method="POST">
+                <form class="form-horizontal" action="{{ action('CampaignController@update',['id'=>$list['id']]) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
                     <div class="row clearfix">

@@ -50,10 +50,12 @@ class ContactListController extends Controller
             $list = new \App\ContactList();
             $list['name'] = $request['name'];
             $list['description'] = $request['description'];
+            \Log::debug($request['custom_fields']);
             $list['custom_fields'] = $request['custom_fields'];
             $list->save();
 
-            return redirect('/contacts');
+            return $this->index();
+            // return redirect('/contacts');
         } catch (\Throwable $e) {
             \Log::error($e);
             //throw $th;

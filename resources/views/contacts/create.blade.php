@@ -40,14 +40,17 @@
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                             <label for="name">Custom Fields</label>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-4" id="dynamic_field">
+                        <div class="col-lg-6 col-md-6 col-sm-4">
                             <div class="form-group">
-                                <input type="text" id="custom_fields" name="custom_fields[]" class="form-control" placeholder="Enter Name">
+                                <input type="text" id="custom_field" name="custom_field" class="form-control" placeholder="Enter Name">
                             </div>
                         </div>
                         <div class="col-lg-1 col-md-1 col-sm-1">
-                            <button type="button" style="left: 100%;" id="addField" class="btn btn-raised btn-success btn-round waves-effect" value="button">+</button>
+                            <button type="button" style="left: 100%;" id="addField" class="btn btn-raised btn-success btn-round waves-effect" value="button"><i class="zmdi zmdi-plus"></i></button>
                         </div>
+                    </div>
+                    <div class="row clearfix" id="dynamic_field">
+
                     </div>
                     </br>
                     <div class="row clearfix">
@@ -69,49 +72,52 @@
     </div>
 </div>
 <script>
-    var i=1;
+    var i = 1;
     var html = "<div class='col-md-6'>";
-    $('#addField').click(function(){
+    $('#addField').click(function() {
         // debugger
+        var c = $('#custom_field').val();
+        $('#custom_field').val('');
         i++;
-        $('#dynamic_field').prepend('<div id="row'+i+'" class="form-group"><input type="text" name="custom_fields[]" placeholder="Enter Name" class="form-control" required/></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></tr>');
+        var temp = '<div class="col-lg-2 col-md-2 col-sm-4 form-control-label"> <label for = "name">  </label> </div>';
+        $('#dynamic_field').prepend('<div class="col-lg-6 col-md-6 col-sm-4">    <div id="row' + i + '" class="form-group">        <input type="text" name="custom_fields[]" placeholder="Enter Name" class="form-control" required value="' + c + '"/>    </div></div><div class="col-lg-1 col-md-1 col-sm-1">    <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></div>');
+        // $('#dynamic_field').prepend('<tr>    <td id="row' + i + '" class="form-group">    <input type="text" name="custom_fields[]" placeholder="Enter Name" class="form-control" required/></td><td>    <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
     });
 
-     $(document).on('click', '.btn_remove', function(){  
-           var button_id = $(this).attr("id");   
-           $('#row'+button_id+'').remove();  
-      }); 
+    $(document).on('click', '.btn_remove', function() {
+        var button_id = $(this).attr("id");
+        $('#row' + button_id + '').remove();
+        $(this).remove();
+    });
 
-     $.ajaxSetup({
-          headers: {
+    $.ajaxSetup({
+        headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
+        }
+    });
 
 
-      $('#submit').click(function(){            
-           $.ajax({  
-                url:postURL,  
-                method:"POST",  
-                data:$('#add_name').serialize(),
-                type:'json',
-                success:function(data)  
-                {
-                    if(data.error){
-                        printErrorMsg(data.error);
-                    }else{
-                        i=1;
-                        $('.dynamic-added').remove();
-                        $('#add_name')[0].reset();
-                        $(".print-success-msg").find("ul").html('');
-                        $(".print-success-msg").css('display','block');
-                        $(".print-error-msg").css('display','none');
-                        $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-                    }
-                }  
-           });  
-      });  
-
+    $('#submit').click(function() {
+        $.ajax({
+            url: postURL,
+            method: "POST",
+            data: $('#add_name').serialize(),
+            type: 'json',
+            success: function(data) {
+                if (data.error) {
+                    printErrorMsg(data.error);
+                } else {
+                    i = 1;
+                    $('.dynamic-added').remove();
+                    $('#add_name')[0].reset();
+                    $(".print-success-msg").find("ul").html('');
+                    $(".print-success-msg").css('display', 'block');
+                    $(".print-error-msg").css('display', 'none');
+                    $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
+                }
+            }
+        });
+    });
 </script>
 
 @stop

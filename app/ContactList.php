@@ -18,7 +18,7 @@ class ContactList extends Model
 	protected $casts = [
 		'name'=>'string',
 		'description'=>'string',
-		'custom_fields'=>'array',
+		'custom_fields'=>'json',
 	];
 	
 	//-----------------------------------------

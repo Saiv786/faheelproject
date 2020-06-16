@@ -12,18 +12,18 @@
             <li>
                 <div class="user-info">
                     <div class="image"><a href="">
-                            @if(Auth::user()->image_url)
+                            @if(\Auth::user()->image_url)
 
-                            <img src="{{ Auth::user()->image_url }}" alt="">
+                            <img src="{{ \Auth::user()->image_url }}" alt="">
                             @else
                             <img src="{{asset('assets/images/default.png')}}" alt="">
                             @endif
                         </a>
                     </div>
                     <div class="detail">
-                        <h4>{{ Auth::user()->name }}</h4>
-                        @if(isset(Auth::user()->role))
-                        <small>{{ Auth::user()->role->name }}</small>
+                        <h4>{{ \Auth::user()->name }}</h4>
+                        @if(isset(\Auth::user()->role))
+                        <small>{{ \Auth::user()->role->name }}</small>
                         @endif
                     </div>
                 </div>

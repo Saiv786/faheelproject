@@ -23,13 +23,13 @@
                         @foreach($lists as $list)
                         <tr>
                             <td>
-                                <a class="single-user-name" href="{{ action('ContactListController@show',['id'=>$list->id]) }}">{{$list->name}}</a><br>
+                                <a class="single-user-name" href="{{ action('ContactListController@show',['id'=>$list['id']]) }}">{{$list->name}}</a><br>
                             </td>
                             <td>
                                 <strong>{{$list->description}}</strong><br>
                             </td>
                             <td class="hidden-md-down">
-                                <a class="single-user-name" href="{{ action('ContactListController@showContacts',['id'=>$list->id]) }}">{{$list->count}}</a><br>
+                                <a class="single-user-name" href="{{ action('ContactListController@showContacts',['id'=>$list['id']]) }}">{{$list->count}}</a><br>
 
                             </td>
                             <td class="hidden-md-down">
@@ -45,10 +45,10 @@
                                 <small>Rate: 80%</small>
                             </td>
                             <td>
-                                <a href="{{ action('ContactListController@edit',['id'=>$list->id]) }}" data-popup="tooltip" title="" type="button" class="btn btn-icon" data-original-title="New subscriber">
+                                <a href="{{ action('ContactListController@edit',['id'=>$list['id']]) }}" data-popup="tooltip" title="" type="button" class="btn btn-icon" data-original-title="New subscriber">
                                     <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-accounts-add"></i>
                                 </a>
-                                <form action="{{ url('/contacts', ['id' => $list->id]) }}" method="post">
+                                <form action="{{ url('/contacts', ['id' => $list['id']]) }}" method="post">
                                     <button type="submit" class="btn btn-danger btn-icon">
                                         <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-delete"></i>
                                     </button>
@@ -56,7 +56,7 @@
                                     {!! csrf_field() !!}
                                 </form>
 
-                                <!-- <a href="{{ action('ContactListController@destroy',['id'=>$list->id]) }}" data-popup="tooltip" title="" type="button" class="btn btn-danger btn-icon" data-original-title="New subscriber">
+                                <!-- <a href="{{ action('ContactListController@destroy',['id'=>$list['id']]) }}" data-popup="tooltip" title="" type="button" class="btn btn-danger btn-icon" data-original-title="New subscriber">
                                     <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-delete"></i>
                                 </a> -->
                             </td>

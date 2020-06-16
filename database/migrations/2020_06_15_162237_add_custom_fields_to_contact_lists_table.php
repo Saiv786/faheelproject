@@ -14,9 +14,11 @@ class AddCustomFieldsToContactListsTable extends Migration
     public function up()
     {
         Schema::table('contact_lists', function (Blueprint $table) {
+            $table->dropColumn('custom_fields');
             $table->json('custom_fields')->nullable();
         });
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->dropColumn('fields');
             $table->json('fields')->nullable();
         });
     }

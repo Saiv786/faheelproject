@@ -16,6 +16,7 @@ class Contact extends Model
 		'phone_no',
 		'address',
 		'contact_list_id',
+		'fields',
 	];
 
 	protected $casts = [
@@ -25,6 +26,7 @@ class Contact extends Model
 		'phone_no'=>'string',
 		'address'=>'string',
 		'contact_list_id'=>'integer',
+		'fields'=>'json',
 	];
 
 	//-----------------------------------------

@@ -180,4 +180,52 @@ class ContactListController extends Controller
         $obj->delete();
         return redirect('/contacts');
     }
+
+    public function editContacts($id)
+    {
+        $obj = \App\Contact::find($id);
+        return view('contacts.editContact', compact('obj'));
+    }
+
+    public function updateContact(Request $request, $id)
+    {
+        $rules = array(
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_no' => 'required',
+            'address' => 'required',
+            'list_contact_id' => 'required',
+        );
+
+        $this->validate($request, $rules);
+        try {
+            $contact = \App\Contact::find($id);
+            $contact_list = \App\ContactList::find($request['list_contact_id']);
+            if (!$contact_list) {
+                throw new \Exception("Contact List Not Found", 403);
+            }
+            $temp = [];
+            foreach ($contact_list['custom_fields'] as $field) {
+                $field=str_replace(" ", "_", $field);
+                $temp[$field] = $request[$field];
+            }
+            $contact_list['custom_fields'] = $temp;
+            $contact['fields'] = $temp;
+            $contact['first_name'] = $request['first_name'];
+            $contact['last_name'] = $request['last_name'];
+            $contact['email'] = $request['email'];
+            $contact['phone_no'] = $request['phone_no'];
+            $contact['address'] = $request['address'];
+            $contact['contact_list_id'] = $request['list_contact_id'];
+
+            // $contact['fields'] = $request;
+            $contact->save();
+        } catch (\Throwable $e) {
+            \Log::error($e);
+
+            //throw $th;
+        }
+        return redirect('/contacts');
+    }
 }

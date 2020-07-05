@@ -12,7 +12,17 @@
 */
 Route::get('/', function () {
     // return view('under_construction');
+    return view('landing_page.index');
+});
+
+Route::get('/login', function () {
+    // return view('under_construction');
     return redirect(route('login'));
+});
+
+Route::get('/register', function () {
+    // return view('under_construction');
+    return redirect(route('register'));
 });
 Route::group(['middleware' => 'auth'], function () {
     // Route::get('/profile', function () {
@@ -39,6 +49,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('schedules', 'ScheduleController')->except(['index']);
     Route::post('contacts/store_contact', 'ContactListController@storeContact');
     Route::get('contacts/view_contact/{id}', 'ContactListController@showContacts');
+    // -------
+    Route::get('/edit/contact/{id}', 'ContactListController@editContacts');
+    Route::post('/update/contact/{id}', 'ContactListController@updateContact');
+    // -------
     Route::get('/schedules', 'ScheduleController@index')->name('schedules');
     Route::get('/schedules/create', function () {
         return view('schedules.create');

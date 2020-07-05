@@ -33,6 +33,9 @@
                             <td>
                                 <strong>{{$contact->email}}</strong><br>
                             </td>
+                            <td>
+                                <strong><a href="{{ action('ContactListController@editContacts', $contact->id) }}">Edit</a></strong><br>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

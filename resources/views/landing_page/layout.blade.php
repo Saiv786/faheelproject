@@ -21,7 +21,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 				
   		<!-- SITE TITLE -->
-		<title>Metreex - SEO & Digital Marketing Agency Landing Page Template</title>
+		<title>Osmly Mail</title>
 							
 		<!-- FAVICON AND TOUCH ICONS  -->
 		<link rel="apple-touch-icon" sizes="152x152" href="assets/landing/images/apple-touch-icon-152x152.png">
@@ -185,23 +185,6 @@
 					<div class="stBlock text-center" style="margin: 0px 15px 30px;">
 						<a class="btn btn-primary tra-white-hover" href="javascript:chooseStyle('none', 60)">Reset Color</a>							
 					</div>
-
-                	<div class="stBlock text-center clearfix" style="margin: 0 6px 15px 10px;">
-						<p>Choose Layout</p>
-						<a class="s_1" href="demo-1.html"><img src="assets/landing/images/color-scheme/l-01.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-2.html"><img src="assets/landing/images/color-scheme/l-02.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-3.html"><img src="assets/landing/images/color-scheme/l-03.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-4.html"><img src="assets/landing/images/color-scheme/l-04.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-5.html"><img src="assets/landing/images/color-scheme/l-05.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-6.html"><img src="assets/landing/images/color-scheme/l-06.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-7.html"><img src="assets/landing/images/color-scheme/l-07.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-8.html"><img src="assets/landing/images/color-scheme/l-08.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-9.html"><img src="assets/landing/images/color-scheme/l-09.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-10.html"><img src="assets/landing/images/color-scheme/l-10.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-11.html"><img src="assets/landing/images/color-scheme/l-11.jpg" alt="layout-image"></a>
-						<a class="s_1" href="demo-12.html"><img src="assets/landing/images/color-scheme/l-12.jpg" alt="layout-image"></a> 
-					</div>	
-
 				</div>
 			</div>
 		</div>	  <!-- END SWITCHER -->

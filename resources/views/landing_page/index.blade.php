@@ -191,7 +191,7 @@ input:checked + .slider:before {
 
 								<!-- Title -->	
 								<h4>Ready To Grow Your Business?</h4>
-								<h3>Get More Leads, More Customers, and More Sales with Metreex.com</h3>
+								<h3>Get More Leads, More Customers, and More Sales with Osmly Mail</h3>
 
 								<!-- Text -->
 								<!-- <p>Egestas magna egestas magna ipsum vitae purus ipsum primis in cubilia laoreet augue luctus 

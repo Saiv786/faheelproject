@@ -63,7 +63,7 @@ class ContactListController extends Controller
     }
     public function storeContact(Request $request)
     {
-            
+
         \Log::info('storeContact');
         \Log::info($request);
 
@@ -79,17 +79,28 @@ class ContactListController extends Controller
         $this->validate($request, $rules);
         try {
             $contact = new \App\Contact();
+            $contact_list = \App\ContactList::find($request['list_contact_id']);
+            if (!$contact_list) {
+                throw new \Exception("Contact List Not Found", 403);
+            }
+            $temp = [];
+            foreach ($contact_list['custom_fields'] as $field) {
+                $field=str_replace(" ", "_", $field);
+                $temp[$field] = $request[$field];
+            }
+            $contact['fields'] = $temp;
             $contact['first_name'] = $request['first_name'];
             $contact['last_name'] = $request['last_name'];
             $contact['email'] = $request['email'];
             $contact['phone_no'] = $request['phone_no'];
             $contact['address'] = $request['address'];
             $contact['contact_list_id'] = $request['list_contact_id'];
-            $contact['fields'] = $request;
+
+            // $contact['fields'] = $request;
             $contact->save();
         } catch (\Throwable $e) {
             \Log::error($e);
-            
+
             //throw $th;
         }
         return redirect('/contacts');
@@ -103,14 +114,14 @@ class ContactListController extends Controller
      */
     public function show($id)
     {
-        $obj= \App\ContactList::find($id);
-        return view('contacts.show')->with('list',$obj);
+        $obj = \App\ContactList::find($id);
+        return view('contacts.show')->with('list', $obj);
     }
     public function showContacts($id)
     {
         //
-        $obj= \App\ContactList::find($id);
-        return view('contacts.showContacts')->with('list',$obj)->with('contacts',$obj->contacts);
+        $obj = \App\ContactList::find($id);
+        return view('contacts.showContacts')->with('list', $obj)->with('contacts', $obj->contacts);
     }
 
     /**
@@ -122,9 +133,8 @@ class ContactListController extends Controller
     public function edit($id)
     {
         //
-        $obj=\App\ContactList::find($id);
-        return view('contacts.addContact')->with('list',$obj);
-
+        $obj = \App\ContactList::find($id);
+        return view('contacts.addContact')->with('list', $obj);
     }
 
     /**
@@ -165,10 +175,9 @@ class ContactListController extends Controller
     public function destroy($id)
     {
         //
-        $obj=\App\ContactList::find($id);
+        $obj = \App\ContactList::find($id);
         $obj->contacts()->delete();
         $obj->delete();
         return redirect('/contacts');
-
     }
 }

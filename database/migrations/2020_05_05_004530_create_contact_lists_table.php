@@ -17,6 +17,7 @@ class CreateContactListsTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
+            $table->json('custom_fields')->nullable();
             $table->timestamps();
         });
     }

@@ -507,7 +507,7 @@
                 <div class="tab-pane active" id="builder">
                     <textarea class="builder-editor pull-right"></textarea>
                     <br />
-                    @include('elements._tags', ['tags' => \App\Template::tags((isset($list) ? $list : null))])
+                    @include('elements._tags', ['tags' => \App\Template::tags((isset($list) ? $list : null),$template->contact_list_id)])
                 </div>
                 <div class="tab-pane" id="design">
                     <div class="form-group">

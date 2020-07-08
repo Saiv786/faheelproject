@@ -51,9 +51,9 @@
 <div class="row clearfix">
     <!-- <button class="btn btn-success " type="button"><i class="zmdi zmdi zmdi-plus"> Add New</i></button> -->
     <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="{{ action('CampaignController@create') }}" type="button" class="btn bg-info-800 btn-success">
-                <i class="icon icon-plus2"></i> {{ trans('messages.create') }}
-            </a>
+        <a href="{{ action('CampaignController@create') }}" type="button" class="btn bg-info-800 btn-success">
+            <i class="icon icon-plus2"></i> {{ trans('messages.create') }}
+        </a>
         <div class="card project_list">
             <div class="table-responsive">
                 <table class="table table-hover c_table theme-color">
@@ -80,6 +80,13 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if(count($campaigns)==0)
+                <div class="alert alert-success">
+                    <center>
+                        <strong>No Campaigns Found!</strong>
+                    </center>
+                </div>
+                @endif
             </div>
             <ul class="pagination pagination-primary mt-4">
                 <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>

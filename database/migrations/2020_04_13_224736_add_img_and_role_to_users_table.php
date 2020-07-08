@@ -17,6 +17,7 @@ class AddImgAndRoleToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->text('image_url')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->integer('role_id')->unsigned()->nullable();
             $table->foreign('role_id')
              ->references('id')->on('roles')

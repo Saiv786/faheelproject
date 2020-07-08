@@ -36,6 +36,9 @@ class CreateSchedulesTable extends Migration
             $table->boolean('is_once')->nullable();
             $table->boolean('is_enabled')->default(true);
             $table->string('cron')->nullable();
+            $table->integer('customer_id')->unsigned()->nullable();
+            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

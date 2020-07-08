@@ -32,6 +32,9 @@
 
             <li class="{{ Request::segment(1) === 'dashboard' ? 'active open' : null }}"><a href="{{route('dashboard')}}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
             @if(Auth::user())
+            @if(Auth::user()->isAdmin())
+            <li class="{{ Request::segment(1) === 'customers' ? 'active open' : null }}"><a href="{{route('customers')}}"><i class="zmdi zmdi-account-calendar"></i><span>Customers</span></a></li>
+            @endif
             <li class="{{ Request::segment(1) === 'my-profile' ? 'active open' : null }}"><a href="{{route('profile')}}"><i class="zmdi zmdi-account"></i><span>My Profile</span></a></li>
             <li class="{{ Request::segment(1) === 'schedule' ? 'active open' : null }}"><a href="{{route('schedules')}}"><i class="zmdi zmdi-alarm"></i><span>Schedules</span></a></li>
             <li class="{{ Request::segment(1) === 'campaigns' ? 'active open' : null }}"><a href="{{route('campaigns')}}"><i class="zmdi zmdi-mail-send"></i><span>Campaigns</span></a></li>

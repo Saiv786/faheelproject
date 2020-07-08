@@ -23,7 +23,7 @@ class TemplateController extends Controller
             ]);
         }
         return view('templates.index', [
-            'templates' => \App\Template::all(),
+            'templates' => \App\Template::where('customer_id', \Auth::user()->id)->get(),
         ]);
         $request->merge(array("customer_id" => $request->user()->id));
         $templates = Template::search($request);
@@ -122,7 +122,8 @@ class TemplateController extends Controller
         $customer = $request->user()->customer;
 
         $template = new Template();
-        // $template->customer_id = $customer->id;
+        $template->customer_id = \Auth::user()->id;
+        $template->contact_list_id = $request->contact_list_id;
 
         // authorize
         // if (!$request->user()->customer->can('update', $template)) {
@@ -249,7 +250,6 @@ class TemplateController extends Controller
      */
     public function destroy($id)
     { 
-        \Log::debug($id);
         $obj=\App\Template::find($id);
         $obj->delete();
         echo trans('messages.templates.deleted');
@@ -341,7 +341,6 @@ class TemplateController extends Controller
      */
     public function delete(Request $request)
     {
-        \Log::debug($request);
         $items = Template::whereIn('uid', explode(',', $request->uids));
 
         foreach ($items->get() as $item) {
@@ -411,24 +410,18 @@ class TemplateController extends Controller
         }
         $filename = 'screenshot-' . $id . '.png';
         
-        \Log::debug("1");
         // remove "data:image/png;base64,"
         $uri = substr($request->data, strpos($request->data, ',') + 1);
         
-        \Log::debug("2");
         // save to file
         file_put_contents($upload_path . $filename, base64_decode($uri));
         
-        \Log::debug("3");
         // create thumbnails
-        \Log::debug("4");
         $img = \Image::make($upload_path . $filename);
         $img->fit(178, 200)->save($upload_path . $filename . '.thumb.jpg');
         
-        \Log::debug("5");
         // save
         $template->image = $upload_loca . $filename;
-        \Log::debug($template->image);
         $template->save();
     }
 
@@ -443,6 +436,7 @@ class TemplateController extends Controller
     {
         $template = new Template();
         $template->name = trans('messages.untitled_template');
+        $template->contact_list_id = $request->contact_list_id;
 
         // authorize
         // if (!$request->user()->customer->can('create', Template::class)) {
@@ -493,7 +487,9 @@ class TemplateController extends Controller
     public function buildSelect(Request $request)
     {
         $template = new Template();
-
+        $template['contact_list_id']=$request->contact_list_id;
+        $template['customer_id']=\Auth::user()->id;
+        \Log::debug($template);
         return view('templates.build_start', [
             'template' => $template,
         ]);

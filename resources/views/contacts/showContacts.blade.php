@@ -24,18 +24,18 @@
                     <tbody>
                         @foreach($contacts as $contact)
                         <tr>
-                            <td>{{$contact->first_name}}<br>
+                            <td><a href="{{ action('ContactListController@editContacts', $contact->id) }}">{{$contact->first_name}}</a><br>
                             </td>
-                            <td>{{$contact->last_name}}<br>
-                            <td>{{$contact->phone_no}}<br>
+                            <td><a href="{{ action('ContactListController@editContacts', $contact->id) }}">{{$contact->last_name}}</a><br></td>
+                            <td>{{$contact->phone_no}}<br></td>
                             <td>{{$contact->address}}<br>
                             </td>
                             <td>
                                 <strong>{{$contact->email}}</strong><br>
                             </td>
-                            <td>
+                            <!-- <td>
                                 <strong><a href="{{ action('ContactListController@editContacts', $contact->id) }}">Edit</a></strong><br>
-                            </td>
+                            </td> -->
                         </tr>
                         @endforeach
                     </tbody>

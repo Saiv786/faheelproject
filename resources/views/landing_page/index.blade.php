@@ -200,6 +200,7 @@ input:checked + .slider:before {
 
 								<!-- Button -->
 								<a href="#services-2" class="btn btn-md btn-primary tra-white-hover">Explore More</a>
+								<a href="/register" class="btn btn-md btn-primary tra-white-hover">Try Now</a>
 								
 							</div>
 						</div>	<!-- END HERO TEXT -->

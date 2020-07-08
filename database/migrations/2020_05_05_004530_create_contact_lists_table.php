@@ -17,7 +17,10 @@ class CreateContactListsTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            // $table->json('custom_fields');
+            $table->json('custom_fields');
+            $table->integer('customer_id')->unsigned()->nullable();
+
+            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

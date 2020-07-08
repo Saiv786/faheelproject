@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-4">
                             <div class="form-group">
-                                <input type="text" id="custom_field" name="custom_field" class="form-control" placeholder="Enter Name">
+                                <input type="text" id="custom_field" name="custom_field" class="form-control" placeholder="Enter Field Name">
                             </div>
                         </div>
                         <div class="col-lg-1 col-md-1 col-sm-1">

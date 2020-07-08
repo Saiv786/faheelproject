@@ -124,7 +124,7 @@ class TemplateController extends Controller
         $template = new Template();
         $template->customer_id = \Auth::user()->id;
         $template->contact_list_id = $request->contact_list_id;
-
+\Log::debug($request->contact_list_id);
         // authorize
         // if (!$request->user()->customer->can('update', $template)) {
         //     return $this->notAuthorized();

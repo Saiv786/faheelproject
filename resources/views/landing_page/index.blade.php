@@ -171,6 +171,31 @@ input:checked + .slider:before {
 #subscription_pricing{
   display: none;
 }
+.pricing-item-cta{
+	    text-align: center;
+    margin-top: 10px;
+}
+.pricing-item-cta .button{
+	width: 80%;
+    background: #ef3f54;
+    color: white;
+    padding: 10px 20%;
+    border-radius: 5px;
+}
+#sub_switcher1,
+#sub_switcher2{
+	    width: 50%;
+    font-size: 16px;
+    padding: 9% 0%;
+}
+
+#pricing_title1{
+	color: rgb(0, 105, 217);
+}
+#sub_switcher2{
+	background-color: rgb(0, 105, 217);
+}
+
 
 </style>
 
@@ -1004,7 +1029,7 @@ input:checked + .slider:before {
 
 						<div style="text-align: center; display: grid; align-items: center;" class="col-md-6">	
 							<div>
-					      		<button id="sub_switcher1" style="margin-right: 2%;" class="btn btn-md btn-primary">Switch to Subscription Pricing</button>
+					      		<button id="sub_switcher1" class="btn btn-md btn-primary">Switch to Subscription Pricing</button>
 							</div>
 							<div>
 					      		<button id="sub_switcher2" class="btn btn-md btn-primary">Switch to Regular Pricing</button>
@@ -1047,7 +1072,7 @@ input:checked + .slider:before {
 						  		          <div class="pricing-item-inner">
 						  		            <div class="pricing-item-content">
 						  		              <div class="pricing-item-header">
-						  		                <div class="pricing-item-title primary-color">Regular Pricing</div>
+						  		                <div id="pricing_title1" class="pricing-item-title primary-color">Regular Pricing</div>
 						  		                <div
 						  		                  class="pricing-item-price"
 						  		                  data-price-output='{
@@ -1127,7 +1152,7 @@ input:checked + .slider:before {
 							                <div class="pricing-item-inner">
 							                  <div class="pricing-item-content">
 							                    <div class="pricing-item-header">
-							                      <div class="pricing-item-title primary-color">Subscription Pricing</div>
+							                      <div id="pricing_title2" class="pricing-item-title primary-color">Subscription Pricing</div>
 							                      <div
 							                        class="pricing-item-price"
 							                        data-price-output='{
@@ -1472,11 +1497,17 @@ input:checked + .slider:before {
 document.getElementById("sub_switcher1").addEventListener("click", function(){
   	document.getElementById("subscription_pricing").style.display = "block";
     document.getElementById("regular_pricing").style.display = "none";
+    document.getElementById("sub_switcher1").style.background = "#0069d9";
+    document.getElementById("pricing_title1").style.color = "#0069d9";
+    document.getElementById("sub_switcher2").style.background = "#ef3f54";
 });
 
 document.getElementById("sub_switcher2").addEventListener("click", function(){
     document.getElementById("subscription_pricing").style.display = "none";
     document.getElementById("regular_pricing").style.display = "block";
+    document.getElementById("sub_switcher1").style.background = "#ef3f54";
+    document.getElementById("pricing_title2").style.color = "#0069d9";
+    document.getElementById("sub_switcher2").style.background = "#0069d9";
 });
 
 </script>

@@ -8,7 +8,7 @@ class CampaignController extends Controller
 {
 	public function index()
 	{
-		$data = \App\Campaign::all();
+		$data = \App\Campaign::where('customer_id',\Auth::user()->id)->get();
 		return view('campaigns.index')->with('campaigns', $data);
 	}
 
@@ -46,6 +46,7 @@ class CampaignController extends Controller
     		$campaign['track_click'] = (boolean)$request['track_click'];
     		$campaign['template_id'] = $request['template_id'];
     		$campaign['schedule_id'] = $request['schedule_id'];
+    		$campaign['customer_id'] = \Auth::user()->id;
 
             $campaign->save();
             $template=\App\Template::find($request['template_id']);

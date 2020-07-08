@@ -1,6 +1,6 @@
 <div class="navbar-right">
     <ul class="navbar-nav">
-        <li><a href="#search" class="main_search" title="Search..."><i class="zmdi zmdi-search"></i></a></li>
+        <!-- <li><a href="#search" class="main_search" title="Search..."><i class="zmdi zmdi-search"></i></a></li>
         <li class="dropdown">
             <a href="javascript:void(0);" class="dropdown-toggle" title="Notifications" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
                 <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
@@ -76,7 +76,7 @@
                 </li>
                 <li class="footer"> <a href="javascript:void(0);">View All Notifications</a> </li>
             </ul>
-        </li>
+        </li> -->
         <li><a href="javascript:void(0);" class="js-right-sidebar" title="Setting"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a></li>
         @guest
         <li><a  class="mega-menu" title="Sign In" href="{{ route('login') }}" ><i class="zmdi zmdi-sign-in"></i>

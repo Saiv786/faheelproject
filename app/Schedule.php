@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+
 class Schedule extends Model
 {
-    public $table = "schedules";
+	public $table = "schedules";
 	protected $dates = ['deleted_at'];
 
 	public $fillable = [
@@ -27,6 +28,7 @@ class Schedule extends Model
 		'description',
 		'is_once',
 		'cron',
+		'customer_id'
 	];
 
 	protected $casts = [
@@ -40,6 +42,7 @@ class Schedule extends Model
 		'description' => 'string',
 		'is_once' => 'boolean',
 		'cron' => 'string',
+		'customer_id' => 'integer',
 	];
 
 	protected $hidden = [
@@ -49,8 +52,9 @@ class Schedule extends Model
 	//-----------------------------------------
 	// Traits Start
 	//-----------------------------------------
-	
-	public function getResistableRelations() {
+
+	public function getResistableRelations()
+	{
 		return [];
 	}
 
@@ -69,10 +73,10 @@ class Schedule extends Model
 	//-----------------------------------------
 	// Attributes Start
 	//-----------------------------------------
-	protected $appends=['next_run_time','description','status','status_class'];
+	protected $appends = ['next_run_time', 'description', 'status', 'status_class'];
 	public function getNextRunTimeAttribute()
 	{
-		$last_run=null;
+		$last_run = null;
 		$date = null;
 		$cron = \Cron\CronExpression::factory($this->cron);
 		$today = Carbon::today();
@@ -146,17 +150,19 @@ class Schedule extends Model
 		}
 		return $description;
 	}
-	public function getStatusAttribute(){
-		if($this->is_enabled){
+	public function getStatusAttribute()
+	{
+		if ($this->is_enabled) {
 			return 'Running';
-		}else{
+		} else {
 			return 'Stopped';
 		}
 	}
-	public function getStatusClassAttribute(){
-		if($this->is_enabled){
+	public function getStatusClassAttribute()
+	{
+		if ($this->is_enabled) {
 			return 'badge-success';
-		}else{
+		} else {
 			return 'badge-danger';
 		}
 	}
@@ -285,9 +291,10 @@ class Schedule extends Model
 		return $date;
 	}
 
-	public function combineDateTime($date,$time){
-		$time=Carbon::parse($time);
-		return Carbon::create($date->year, $date->month, $date->day,$time->hour,$time->minute);
+	public function combineDateTime($date, $time)
+	{
+		$time = Carbon::parse($time);
+		return Carbon::create($date->year, $date->month, $date->day, $time->hour, $time->minute);
 	}
 	//-----------------------------------------
 	// Functions End

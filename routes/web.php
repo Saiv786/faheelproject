@@ -32,7 +32,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', function () {
         return view('pages.profile');
     })->name('profile');
+    Route::get('/customers', function () {
+        return view('customers.index')->with('lists',[]);
+    })->name('customers');
     // Route::get('/profile', 'UserProfileController@getAuthUser')->name('profile');
+    Route::delete('/customers/{id}', function($id){
+        $user=\App\User::find($id);
+        if($user){
+            $user->delete();
+        }
+        return view('customers.index')->with('lists',[]);
+    });
     Route::post('/profile', 'UserProfileController@updateAuthUser');
     Route::get('/dashboard', function () {
         return view('dashboard.index');
@@ -81,7 +91,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('templates/{uid}/saveImage', 'TemplateController@saveImage');
     Route::get('templates/{uid}/preview', 'TemplateController@preview');
     Route::get('templates/delete', 'TemplateController@delete');
-    Route::get('templates/build/select', 'TemplateController@buildSelect');
+    Route::get('templates/build/select/{id}', 'TemplateController@buildSelect');
     Route::get('templates/build/{style?}', 'TemplateController@build');
     Route::get('templates/{uid}/rebuild', 'TemplateController@rebuild');
     Route::resource('templates', 'TemplateController');

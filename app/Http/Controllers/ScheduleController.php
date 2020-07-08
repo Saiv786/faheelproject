@@ -15,7 +15,7 @@ class ScheduleController extends Controller
     {
         //
         ini_set('max_execution_time', 180); 
-        $lists = \App\Schedule::all();
+        $lists = \App\Schedule::where('customer_id', \Auth::user()->id)->get();
         return view('schedules.index')->with('schedules', $lists);
     }
 
@@ -61,6 +61,7 @@ class ScheduleController extends Controller
         }
         $schedule['cron']=$schedule->getCronString();
         $schedule['one_time_date']=$schedule->getNextRunTime(null);
+        $schedule['customer_id']=\Auth::user()->id;
         $schedule->save();
         return redirect('/schedules');
         //

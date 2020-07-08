@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+    public function isAdmin()
+    {
+        $role = \App\Role::where('name', 'Admin')->first();
+        return $role->id == $this->role_id;
+    }
 }

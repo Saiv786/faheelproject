@@ -27,7 +27,7 @@
                 <div class="row">
 					@foreach(\App\Template::templateStyles() as $name => $style)
 						<div class="col-xxs-12 col-xs-6 col-sm-3 col-md-2">
-							<a href="{{ action('TemplateController@build', ['style' => $name]) }}">
+							<a href="{{ action('TemplateController@build', ['style' => $name,'contact_list_id'=>request()['contact_list_id']]) }}">
 								<div class="panel panel-flat panel-template-style">
 									<div class="panel-body">
 										<img src="{{ url('images/template_styles/'.$name.'.png') }}" />

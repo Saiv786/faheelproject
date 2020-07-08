@@ -19,6 +19,7 @@ class Campaign extends Model
 		'track_click',
 		'template_id',
 		'schedule_id',
+		'customer_id'
 	];
 
 	protected $casts = [
@@ -37,6 +38,7 @@ class Campaign extends Model
 		'template_id'=>'integer',
 		'schedule_id'=>'integer',
 		'contact_list_id'=>'integer',
+		'customer_id'=>'integer',
 
 	];
 

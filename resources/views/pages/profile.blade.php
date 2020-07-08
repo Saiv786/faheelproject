@@ -18,11 +18,11 @@
                 <h4 class="m-t-10">{{\Auth::user()->name ?? null}}</h4>
                 <div class="row">
                     <div class="col-12">
-                        <ul class="social-links list-unstyled">
+                        <!-- <ul class="social-links list-unstyled">
                             <li><a title="facebook" href="javascript:void(0);"><i class="zmdi zmdi-facebook"></i></a></li>
                             <li><a title="twitter" href="javascript:void(0);"><i class="zmdi zmdi-twitter"></i></a></li>
                             <li><a title="instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram"></i></a></li>
-                        </ul>
+                        </ul> -->
                         <p class="text-muted">{{\Auth::user()['email']}}</p>
                         <p class="text-muted">{{\Auth::user()['address']}}</p>
                     </div>

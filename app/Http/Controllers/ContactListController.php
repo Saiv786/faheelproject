@@ -15,7 +15,7 @@ class ContactListController extends Controller
     public function index()
     {
         //
-        $lists = \App\ContactList::all();
+        $lists = \App\ContactList::where('customer_id', \Auth::user()->id)->get();
         return view('contacts.index')->with('lists', $lists);
     }
 
@@ -50,8 +50,8 @@ class ContactListController extends Controller
             $list = new \App\ContactList();
             $list['name'] = $request['name'];
             $list['description'] = $request['description'];
-            \Log::debug($request['custom_fields']);
-            $list['custom_fields'] = $request['custom_fields'];
+            $list['custom_fields'] = $request['custom_fields']?? [];
+            $list['customer_id'] = \Auth::user()->id;
             $list->save();
 
             return $this->index();
@@ -84,9 +84,12 @@ class ContactListController extends Controller
                 throw new \Exception("Contact List Not Found", 403);
             }
             $temp = [];
-            foreach ($contact_list['custom_fields'] as $field) {
-                $field=str_replace(" ", "_", $field);
-                $temp[$field] = $request[$field];
+            if (isset($contact_list['custom_fields']) && count($contact_list['custom_fields']) > 1) {
+
+                foreach ($contact_list['custom_fields'] as $field) {
+                    $field = str_replace(" ", "_", $field);
+                    $temp[$field] = $request[$field];
+                }
             }
             $contact['fields'] = $temp;
             $contact['first_name'] = $request['first_name'];
@@ -121,7 +124,8 @@ class ContactListController extends Controller
     {
         //
         $obj = \App\ContactList::find($id);
-        return view('contacts.showContacts')->with('list', $obj)->with('contacts', $obj->contacts);
+        $contacts= $obj->contacts;
+        return view('contacts.showContacts')->with('list', $obj)->with('contacts', $contacts);
     }
 
     /**
@@ -207,7 +211,7 @@ class ContactListController extends Controller
             }
             $temp = [];
             foreach ($contact_list['custom_fields'] as $field) {
-                $field=str_replace(" ", "_", $field);
+                $field = str_replace(" ", "_", $field);
                 $temp[$field] = $request[$field];
             }
             $contact_list['custom_fields'] = $temp;

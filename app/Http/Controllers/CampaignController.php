@@ -8,7 +8,7 @@ class CampaignController extends Controller
 {
 	public function index()
 	{
-		$data = \App\Campaign::all();
+		$data = \App\Campaign::where('customer_id',\Auth::user()->id)->get();
 		return view('campaigns.index')->with('campaigns', $data);
 	}
 
@@ -46,9 +46,21 @@ class CampaignController extends Controller
     		$campaign['track_click'] = (boolean)$request['track_click'];
     		$campaign['template_id'] = $request['template_id'];
     		$campaign['schedule_id'] = $request['schedule_id'];
+    		$campaign['customer_id'] = \Auth::user()->id;
 
-    		$campaign->save();
-
+            $campaign->save();
+            $template=\App\Template::find($request['template_id']);
+            $regex = '~\{([^}]*)\}~';
+            // $string = "www.example.com/?foo={foo}&test={test}";
+            preg_match_all($regex, $template['content'], $matches);
+            // preg_match_all($regex, $string, $matches);
+            var_dump($matches[1]);
+            $data=[];
+            $data['template_vars']= $matches[1];
+            $data['template_vars']= $matches[1];
+            
+            \Log::debug($matches);
+            // return view('campaigns.mapping')->with(['campaign'=>$campaign,'data' => $this->getRelatedData()]);
             return redirect('/Campaigns');
         } catch (\Throwable $e) {
             \Log::error($e);

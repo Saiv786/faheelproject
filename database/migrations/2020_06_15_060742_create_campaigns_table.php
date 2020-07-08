@@ -40,6 +40,9 @@ class CreateCampaignsTable extends Migration
              ->references('id')->on('schedules')
              ->onDelete('set null');
             $table->index(['schedule_id']);
+            $table->integer('customer_id')->unsigned()->nullable();
+
+            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

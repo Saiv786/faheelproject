@@ -31,7 +31,7 @@
                             
                             @include('templates._form')
 							
-							@include('elements._tags', ['tags' => \App\Template::tags()])
+							@include('elements._tags', ['tags' => \App\Template::tags(['dsa'])])
                             
 							<hr>
                             <div class="text-right">

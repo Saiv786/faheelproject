@@ -12,13 +12,15 @@ class ContactList extends Model
 	public $fillable = [
 		'name',
 		'description',
-		'custom_fields'
+		'custom_fields',
+		'customer_id'
 	];
 	
 	protected $casts = [
 		'name'=>'string',
 		'description'=>'string',
 		'custom_fields'=>'json',
+		'customer_id'=>'integer',
 	];
 	
 	//-----------------------------------------
@@ -38,7 +40,7 @@ class ContactList extends Model
 	//-----------------------------------------
 	public function contacts()
 	{
-		return $this->hasMany(\App\Contact::class);
+		return $this->hasMany(\App\Contact::class,'contact_list_id');
 	}
 	public function compaign()
 	{

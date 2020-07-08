@@ -28,12 +28,12 @@
   width: 100%;
 }
 .pricing-slider .pricing-slider-value {
-  position: absolute;
+  /*position: absolute;
   font-size: 14px;
   line-height: 22px;
   font-weight: 500;
   color: #909cb5;
-  margin-top: 8px;
+  margin-top: 8px;*/
   --thumb-size: 36px;
 }
 .pricing-items {
@@ -999,185 +999,182 @@ input:checked + .slider:before {
 							</p>
 								
 						</div>
+					
+
+						<div style="text-align: center; display: grid; align-items: center;" class="col-md-6">	
+							<div>
+					      		<button id="sub_switcher1" style="margin-right: 2%;" class="btn btn-md btn-primary">Switch to Subscription Pricing</button>
+							</div>
+							<div>
+					      		<button id="sub_switcher2" class="btn btn-md btn-primary">Switch to Regular Pricing</button>
+							</div>				      
+					    </div>
+					    <div style="display: flex" class="col-md-6">
+					  		<div id="regular_pricing" class="pricing" style="flex: 1">
+					  		      <div class="pricing-slider">
+					  		        <label class="form-slider">
+					  		          <span>How many E-mails do you want?</span>
+					  		          <input
+					  		            type="range"
+					  		            value="1"
+					  		            data-price-input='{
+					  		                "0": "30000",
+					  		                "1": "50000",
+					  		                "2": "75000",
+					  		                "3": "100000",
+					  		                "4": "150000",
+					  		                "5": "200000",
+					  		                "6": "400000",
+					  		                "7": "600000",
+					  		                "8": "800000",
+					  		                "9": "1000000",
+					                      "10": "1500000",
+					                      "11": "2000000",
+					                      "12": "2500000",
+					                      "13": "3000000",
+					                      "14": "3500000",
+					                      "15": "4000000",
+					                      "16": "4500000",
+					                      "17": "5000000"                      
+					  		              }'
+					  		          />
+					  		        </label>
+					  		        
+
+						  		      <div class="pricing-items">
+						  		        <div class="pricing-item">
+						  		          <div class="pricing-item-inner">
+						  		            <div class="pricing-item-content">
+						  		              <div class="pricing-item-header">
+						  		                <div class="pricing-item-title primary-color">Regular Pricing</div>
+						  		                <div
+						  		                  class="pricing-item-price"
+						  		                  data-price-output='{
+						  		                    "0": ["$", "10", "/m"],
+						  		                    "1": ["$", "14", "/m"],
+						  		                    "2": ["$", "22", "/m"],
+						  		                    "3": ["$", "30", "/m"],
+						  		                    "4": ["$", "42", "/m"],
+						  		                    "5": ["$", "50", "/m"],
+						  		                    "6": ["$", "100", "/m"],
+						  		                    "7": ["$", "140", "/m"],
+						  		                    "8": ["$", "180", "/m"],
+						  		                    "9": ["$", "220", "/m"],
+						                          "10": ["$", "300", "/m"],
+						                          "11": ["$", "380", "/m"],
+						                          "12": ["$", "460", "/m"],
+						                          "13": ["$", "530", "/m"],
+						                          "14": ["$", "580", "/m"],
+						                          "15": ["$", "670", "/m"],
+						                          "16": ["$", "740", "/m"],
+						                          "17": ["$", "810", "/m"]
+						  		                  }'
+						  		                >
+						  		                  <span class="pricing-item-price-currency"></span>
+						  		                  <span class="pricing-item-price-amount"></span>
+						  		                  <span class="pricing-item-price-after"></span>
+						  		                </div>
+						  		              </div>
+						  		              <div class="pricing-item-features">
+						  		                <ul class="pricing-item-features-list">
+						  		                  <li class="is-checked"><div class="pricing-slider-value"></div><span style="margin-left: 10px">Emails</span></li>
+						  		                </ul>
+						  		              </div>
+						  		            </div>
+						  		            <div class="pricing-item-cta">
+						  		              <a class="button" href="#">Buy Now</a>
+						  		            </div>
+						  		          </div>
+						  		        </div>
+						  		      </div>
+					  		      </div>
+					  		</div>
+						     <div id="subscription_pricing" class="pricing" style="flex: 1">
+						            <div class="pricing-slider">
+						              <label class="form-slider">
+						                <span>How many E-mails do you want?</span>
+						                <input
+						                  type="range"
+						                  value="1"
+						                  data-price-input='{
+						                      "0": "5000",
+						                      "1": "10000",
+						                      "2": "20000",
+						                      "3": "30000",
+						                      "4": "40000",
+						                      "5": "50000",
+						                      "6": "75000",
+						                      "7": "100000",
+						                      "8": "125000",
+						                      "9": "150000",
+						                      "10": "175000",
+						                      "11": "200000",
+						                      "12": "250000",
+						                      "13": "300000",
+						                      "14": "400000",
+						                      "15": "500000",
+						                      "16": "600000",
+						                      "17": "700000",
+						                      "18": "800000",                      
+						                      "19": "900000",                      
+						                      "20": "1000000"                     
+						                    }'
+						                />
+						              </label>
+							            <div class="pricing-items">
+							              <div class="pricing-item">
+							                <div class="pricing-item-inner">
+							                  <div class="pricing-item-content">
+							                    <div class="pricing-item-header">
+							                      <div class="pricing-item-title primary-color">Subscription Pricing</div>
+							                      <div
+							                        class="pricing-item-price"
+							                        data-price-output='{
+							                          "0": ["$", "15", "/m"],
+							                          "1": ["$", "30", "/m"],
+							                          "2": ["$", "45", "/m"],
+							                          "3": ["$", "60", "/m"],
+							                          "4": ["$", "75", "/m"],
+							                          "5": ["$", "90", "/m"],
+							                          "6": ["$", "105", "/m"],
+							                          "7": ["$", "130", "/m"],
+							                          "8": ["$", "160", "/m"],
+							                          "9": ["$", "190", "/m"],
+							                          "10": ["$", "240", "/m"],
+							                          "11": ["$", "270", "/m"],
+							                          "12": ["$", "310", "/m"],
+							                          "13": ["$", "350", "/m"],
+							                          "14": ["$", "470", "/m"],
+							                          "15": ["$", "590", "/m"],
+							                          "16": ["$", "700", "/m"],
+							                          "17": ["$", "810", "/m"],
+							                          "18": ["$", "930", "/m"],
+							                          "19": ["$", "1050", "/m"],
+							                          "20": ["$", "1200", "/m"]
+							                        }'
+							                      >
+							                        <span class="pricing-item-price-currency"></span>
+							                        <span class="pricing-item-price-amount"></span>
+							                        <span class="pricing-item-price-after"></span>
+							                      </div>
+							                    </div>
+							                    <div class="pricing-item-features">
+							                      <ul class="pricing-item-features-list">
+							                        <li class="is-checked"><div class="pricing-slider-value"></div><span style="margin-left: 10px">Emails</span></li>
+							                      </ul>
+							                    </div>
+							                  </div>
+							                  <div class="pricing-item-cta">
+							                    <a class="button" href="#">Buy Now</a>
+							                  </div>
+							                </div>
+							              </div>
+							            </div>
+						            </div>
+						     </div>
+					    </div>
+
 					</div>	 <!-- END SECTION TITLE -->	
-
-					<div style="text-align: center; margin-bottom: 10%">
-				      <!-- <span style="margin-right: 2%;"><b>Switch to Subscription Pricing</b></span> -->
-				      <!-- <label class="switch">
-				        <input id="sub_switcher" type="checkbox">
-				        <span class="slider round"></span>
-				      </label> -->
-				      <button id="sub_switcher1" style="margin-right: 2%;" class="btn btn-md btn-primary">Switch to Subscription Pricing</button>
-				      <button id="sub_switcher2" class="btn btn-md btn-primary">Switch to Regular Pricing</button>
-				    </div>
-				    <div style="display: flex">
-				  		<div id="regular_pricing" class="pricing" style="flex: 1">
-				  		      <div class="pricing-slider">
-				  		        <label class="form-slider">
-				  		          <span>How many E-mails do you want?</span>
-				  		          <input
-				  		            type="range"
-				  		            value="1"
-				  		            data-price-input='{
-				  		                "0": "30000",
-				  		                "1": "50000",
-				  		                "2": "75000",
-				  		                "3": "100000",
-				  		                "4": "150000",
-				  		                "5": "200000",
-				  		                "6": "400000",
-				  		                "7": "600000",
-				  		                "8": "800000",
-				  		                "9": "1000000",
-				                      "10": "1500000",
-				                      "11": "2000000",
-				                      "12": "2500000",
-				                      "13": "3000000",
-				                      "14": "3500000",
-				                      "15": "4000000",
-				                      "16": "4500000",
-				                      "17": "5000000"                      
-				  		              }'
-				  		          />
-				  		        </label>
-				  		        <div class="pricing-slider-value"></div>
-				  		      </div>
-				  		      <div class="pricing-items">
-				  		        <div class="pricing-item">
-				  		          <div class="pricing-item-inner">
-				  		            <div class="pricing-item-content">
-				  		              <div class="pricing-item-header">
-				  		                <div class="pricing-item-title primary-color">Regular Pricing</div>
-				  		                <div
-				  		                  class="pricing-item-price"
-				  		                  data-price-output='{
-				  		                    "0": ["$", "10", "/m"],
-				  		                    "1": ["$", "14", "/m"],
-				  		                    "2": ["$", "22", "/m"],
-				  		                    "3": ["$", "30", "/m"],
-				  		                    "4": ["$", "42", "/m"],
-				  		                    "5": ["$", "50", "/m"],
-				  		                    "6": ["$", "100", "/m"],
-				  		                    "7": ["$", "140", "/m"],
-				  		                    "8": ["$", "180", "/m"],
-				  		                    "9": ["$", "220", "/m"],
-				                          "10": ["$", "300", "/m"],
-				                          "11": ["$", "380", "/m"],
-				                          "12": ["$", "460", "/m"],
-				                          "13": ["$", "530", "/m"],
-				                          "14": ["$", "580", "/m"],
-				                          "15": ["$", "670", "/m"],
-				                          "16": ["$", "740", "/m"],
-				                          "17": ["$", "810", "/m"]
-				  		                  }'
-				  		                >
-				  		                  <span class="pricing-item-price-currency"></span>
-				  		                  <span class="pricing-item-price-amount"></span>
-				  		                  <span class="pricing-item-price-after"></span>
-				  		                </div>
-				  		              </div>
-				  		              <div class="pricing-item-features">
-				  		                <ul class="pricing-item-features-list">
-				  		                  <li class="is-checked">Excepteur sint occaecat</li>
-				  		                  <li>Excepteur sint occaecat</li>
-				  		                </ul>
-				  		              </div>
-				  		            </div>
-				  		            <div class="pricing-item-cta">
-				  		              <a class="button" href="#">Buy Now</a>
-				  		            </div>
-				  		          </div>
-				  		        </div>
-				  		      </div>
-				  		</div>
-					     <div id="subscription_pricing" class="pricing" style="flex: 1">
-					            <div class="pricing-slider">
-					              <label class="form-slider">
-					                <span>How many E-mails do you want?</span>
-					                <input
-					                  type="range"
-					                  value="1"
-					                  data-price-input='{
-					                      "0": "5000",
-					                      "1": "10000",
-					                      "2": "20000",
-					                      "3": "30000",
-					                      "4": "40000",
-					                      "5": "50000",
-					                      "6": "75000",
-					                      "7": "100000",
-					                      "8": "125000",
-					                      "9": "150000",
-					                      "10": "175000",
-					                      "11": "200000",
-					                      "12": "250000",
-					                      "13": "300000",
-					                      "14": "400000",
-					                      "15": "500000",
-					                      "16": "600000",
-					                      "17": "700000",
-					                      "18": "800000",                      
-					                      "19": "900000",                      
-					                      "20": "1000000"                     
-					                    }'
-					                />
-					              </label>
-					              <div class="pricing-slider-value"></div>
-					            </div>
-					            <div class="pricing-items">
-					              <div class="pricing-item">
-					                <div class="pricing-item-inner">
-					                  <div class="pricing-item-content">
-					                    <div class="pricing-item-header">
-					                      <div class="pricing-item-title primary-color">Subscription Pricing</div>
-					                      <div
-					                        class="pricing-item-price"
-					                        data-price-output='{
-					                          "0": ["$", "15", "/m"],
-					                          "1": ["$", "30", "/m"],
-					                          "2": ["$", "45", "/m"],
-					                          "3": ["$", "60", "/m"],
-					                          "4": ["$", "75", "/m"],
-					                          "5": ["$", "90", "/m"],
-					                          "6": ["$", "105", "/m"],
-					                          "7": ["$", "130", "/m"],
-					                          "8": ["$", "160", "/m"],
-					                          "9": ["$", "190", "/m"],
-					                          "10": ["$", "240", "/m"],
-					                          "11": ["$", "270", "/m"],
-					                          "12": ["$", "310", "/m"],
-					                          "13": ["$", "350", "/m"],
-					                          "14": ["$", "470", "/m"],
-					                          "15": ["$", "590", "/m"],
-					                          "16": ["$", "700", "/m"],
-					                          "17": ["$", "810", "/m"],
-					                          "18": ["$", "930", "/m"],
-					                          "19": ["$", "1050", "/m"],
-					                          "20": ["$", "1200", "/m"]
-					                        }'
-					                      >
-					                        <span class="pricing-item-price-currency"></span>
-					                        <span class="pricing-item-price-amount"></span>
-					                        <span class="pricing-item-price-after"></span>
-					                      </div>
-					                    </div>
-					                    <div class="pricing-item-features">
-					                      <ul class="pricing-item-features-list">
-					                        <li class="is-checked">Excepteur sint occaecat</li>
-					                        <li>Excepteur sint occaecat</li>
-					                      </ul>
-					                    </div>
-					                  </div>
-					                  <div class="pricing-item-cta">
-					                    <a class="button" href="#">Buy Now</a>
-					                  </div>
-					                </div>
-					              </div>
-					            </div>
-					     </div>
-				    </div>
-
-
 	
 
 
@@ -1379,10 +1376,12 @@ input:checked + .slider:before {
 <script type="text/javascript">
 	(function() {
   const pricingSliders = document.querySelectorAll(".pricing-slider");
+  const pricingSliders2 = document.querySelectorAll(".pricing-slider2");
 
   if (pricingSliders.length > 0) {
     for (let i = 0; i < pricingSliders.length; i++) {
       const pricingSlider = pricingSliders[i];
+      const pricingSlider2 = pricingSliders2[i];
 
       // Build the input object
       const pricingInput = {
@@ -1394,6 +1393,9 @@ input:checked + .slider:before {
       pricingInput.currentValEl = pricingSlider.querySelector(
         ".pricing-slider-value"
       );
+      // pricingInput.currentValEl = pricingSlider2.querySelector(
+      //   ".pricing-slider-value2"
+      // );
       pricingInput.thumbSize = parseInt(
         window
           .getComputedStyle(pricingInput.currentValEl)
@@ -1461,8 +1463,8 @@ input:checked + .slider:before {
     const thumbOffset = input.thumbSize * multiplier;
     const priceInputOffset =
       (input.thumbSize - input.currentValEl.clientWidth) / 2;
-    input.currentValEl.style.left =
-      input.el.clientWidth * multiplier - thumbOffset + priceInputOffset + "px";
+    // input.currentValEl.style.left =
+    //   input.el.clientWidth * multiplier - thumbOffset + priceInputOffset + "px";
   }
 })();
 

@@ -1108,7 +1108,7 @@ input:checked + .slider:before {
 						  		              </div>
 						  		            </div>
 						  		            <div class="pricing-item-cta">
-						  		              <a class="button" href="#">Buy Now</a>
+						  		              <a class="button" href="/register">Buy Now</a>
 						  		            </div>
 						  		          </div>
 						  		        </div>

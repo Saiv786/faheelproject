@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="row clearfix">
-    <div class="col-md-12 col-sm-12 col-xs-12">
+    <!-- <div class="col-md-12 col-sm-12 col-xs-12">
         <a href="{{ action('ContactListController@create') }}" type="button" class="btn bg-info-800 btn-success">
             <i class="icon icon-plus2"></i> {{ trans('messages.create') }}
-        </a>
+        </a> -->
         <div class="card project_list">
             <div class="table-responsive">
                 <table class="table table-hover c_table theme-color">

@@ -11,10 +11,10 @@
         <div class="card widget_2 big_icon traffic">
             <div class="body">
                 <h6>Sending <br> Limit</h6>
-                <h2>25 <small class="info">of Unlimited</small></h2>
+                <h2>{{\Auth::user()->emails_sent}} <small class="info">of @php if(\Auth::user()->isAdmin()){echo 'Unlimited';}else { echo \Auth::user()->email_counts;} @endphp</small></h2>
                 <!-- <small>2% higher than last month</small> -->
                 <div class="progress">
-                    <div class="progress-bar l-amber" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>
+                    <div class="progress-bar l-amber" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{100*(\Auth::user()->emails_sent)/\Auth::user()->email_counts}}%;"></div>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="state_w1 mb-1 mt-1">
                             <div class="d-flex justify-content-between">
-                                <div>                                
+                                <div>
                                     <h5>365</h5>
                                     <span><i class="zmdi zmdi-turning-sign"></i> Returns</span>
                                 </div>
@@ -112,7 +112,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="state_w1 mb-1 mt-1">
                             <div class="d-flex justify-content-between">
-                                <div>                            
+                                <div>
                                     <h5>2,055</h5>
                                     <span><i class="zmdi zmdi-print"></i> Invoices</span>
                                 </div>

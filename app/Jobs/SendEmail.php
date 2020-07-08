@@ -32,6 +32,7 @@ class SendEmail implements ShouldQueue
         $campaigns = \App\Campaign::where('next_run_time', '<=', \Carbon\Carbon::now())->toSql();
         $campaigns = \App\Campaign::where('next_run_time', '<=', \Carbon\Carbon::now())->get();
         foreach ($campaigns as $key => $value) {
+            $count=0;
             $content = $value->template->content;
             $regex = '~\{([^}]*)\}~';
             preg_match_all($regex, $content, $matches);
@@ -53,8 +54,13 @@ class SendEmail implements ShouldQueue
                     }
                     $new_content=str_replace($matches[0][$key],$val[$value_var],$new_content);
                 }
+                $count++;
                 $x = \Mail::to($contact['email'])->send(new \App\Mail\BasicMail(['content' => $new_content, 'subject' => $value['subject'], 'reply_to'=>$value['reply_to']], $value['from_name']));
             }
+            $user=\App\User::find($value['customer_id']);
+            $user->emails_sent+=$count;
+            $user->save();
         }
+        
     }
 }

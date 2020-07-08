@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id', 'image_url','contact_no','address'
+        'name', 'email', 'password','role_id', 'image_url','contact_no','address', 'email_counts','emails_sent'
     ];
 
     /**
@@ -40,6 +40,8 @@ class User extends Authenticatable
         'image_url' => 'string',
         'contact_no' => 'string',
         'address' => 'string',
+        'email_counts' => 'integer',
+        'emails_sent' => 'integer',
     ];
 
     public function role()

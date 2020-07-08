@@ -47,20 +47,20 @@ class CampaignController extends Controller
     		$campaign['template_id'] = $request['template_id'];
     		$campaign['schedule_id'] = $request['schedule_id'];
     		$campaign['customer_id'] = \Auth::user()->id;
+    		$campaign['next_run_time'] = \App\Schedule::find($request['schedule_id'])->getNextRunTimeDate() ?? null;
 
             $campaign->save();
-            $template=\App\Template::find($request['template_id']);
-            $regex = '~\{([^}]*)\}~';
-            // $string = "www.example.com/?foo={foo}&test={test}";
-            preg_match_all($regex, $template['content'], $matches);
-            // preg_match_all($regex, $string, $matches);
-            var_dump($matches[1]);
-            $data=[];
-            $data['template_vars']= $matches[1];
-            $data['template_vars']= $matches[1];
+            // $template=\App\Template::find($request['template_id']);
+            // $regex = '~\{([^}]*)\}~';
+            // // $string = "www.example.com/?foo={foo}&test={test}";
+            // preg_match_all($regex, $template['content'], $matches);
+            // // preg_match_all($regex, $string, $matches);
+            // var_dump($matches[1]);
+            // $data=[];
+            // $data['template_vars']= $matches[1];
+            // $data['template_vars']= $matches[1];
             
-            \Log::debug($matches);
-            // return view('campaigns.mapping')->with(['campaign'=>$campaign,'data' => $this->getRelatedData()]);
+            // // return view('campaigns.mapping')->with(['campaign'=>$campaign,'data' => $this->getRelatedData()]);
             return redirect('/Campaigns');
         } catch (\Throwable $e) {
             \Log::error($e);

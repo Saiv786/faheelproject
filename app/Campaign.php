@@ -19,7 +19,8 @@ class Campaign extends Model
 		'track_click',
 		'template_id',
 		'schedule_id',
-		'customer_id'
+		'customer_id',
+		'next_run_time'
 	];
 
 	protected $casts = [

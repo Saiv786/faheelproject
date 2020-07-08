@@ -74,7 +74,10 @@ class Schedule extends Model
 	// Attributes Start
 	//-----------------------------------------
 	protected $appends = ['next_run_time', 'description', 'status', 'status_class'];
-	public function getNextRunTimeAttribute()
+	public function getNextRunTimeAttribute(){
+		return $this->getNextRunTimeDate()->format('F j, Y, g:i a');
+	}
+	public function getNextRunTimeDate()
 	{
 		$last_run = null;
 		$date = null;
@@ -89,7 +92,7 @@ class Schedule extends Model
 				return null;
 			}
 
-			return $date->format('F j, Y, g:i a');
+			return $date;
 		} else {
 			if ($today->gt($this->occur_every_end_time)) {
 				return $date;
@@ -126,7 +129,7 @@ class Schedule extends Model
 			$ref_start->addDay();
 		} while (!$break);
 
-		return $date->format('F j, Y, g:i a');
+		return $date;
 	}
 	public function getDescriptionAttribute()
 	{

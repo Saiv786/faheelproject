@@ -100,7 +100,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('send_mail', function () {
     $x = Mail::to('moeezghauri786@gmail.com')->send(new \App\Mail\BasicMail(['body' => 'It works!'], 'noor'));
-    \Log::debug($x);
     echo $x;
 });
 Auth::routes();

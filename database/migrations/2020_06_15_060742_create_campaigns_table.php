@@ -43,6 +43,7 @@ class CreateCampaignsTable extends Migration
             $table->integer('customer_id')->unsigned()->nullable();
 
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
+            $table->datetime('next_run_time')->nullable();
 
             $table->timestamps();
         });

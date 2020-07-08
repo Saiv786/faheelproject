@@ -277,8 +277,6 @@ class Template extends Model
      */
     public static function tags($list = null,$contact_list_id=null)
     {
-        \Log::debug('-------');
-        \Log::debug($list);
         $tags = [];
 
         // $tags[] = ['name' => 'SUBSCRIBER_EMAIL', 'required' => false];

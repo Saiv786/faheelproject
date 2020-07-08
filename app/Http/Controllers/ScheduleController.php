@@ -118,8 +118,6 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        \Log::debug('in Update');
-        \Log::debug($request);
         // dd($id);
         // $rules = array(
         //     'name' => 'required',

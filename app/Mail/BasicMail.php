@@ -21,6 +21,12 @@ class BasicMail extends Mailable
     {
         //
         $this->object=$obj;
+        if(!isset($this->object['content'])){
+            $this->object['content']='';
+        }
+        if(!isset($this->object['reply_to'])){
+            $this->object['reply_to']='';
+        }
         $this->recepient=$recepient.'@osmlymail.com';
     }
 
@@ -31,7 +37,15 @@ class BasicMail extends Mailable
      */
     public function build()
     {
-        return $this->from($this->recepient)->markdown('emails.basic_mail')->with(['object'=>$this->object]);
+        $output= $this->from($this->recepient)->html($this->object['content']);
+        if($this->object['subject']){
+            $output->subject($this->object['subject']);
+        }
+        if($this->object['reply_to']){
+            $output->replyTo($this->object['reply_to']);
+        }
+        return $output;
+        // return $this->from($this->recepient)->markdown('emails.basic_mail')->with(['object'=>$this->object]);
         // ->with([
         //         'buyer'            => $this->order->user->name,
         //         'order'            => $this->order->name,

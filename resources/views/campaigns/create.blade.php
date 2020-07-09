@@ -25,8 +25,8 @@
                             <div class="form-group">
                                 <select class="form-control show-tick" id="contact_list_id" name="contact_list_id">
                                     <!-- <option value="">-- Please select --</option> -->
-                                     @foreach ($data['contact_lists'] as $contact_list)
-                                        <option value="{{ $contact_list->id }}">{{ $contact_list->name }}</option>
+                                    @foreach ($data['contact_lists'] as $contact_list)
+                                    <option value="{{ $contact_list->id }}">{{ $contact_list->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -56,9 +56,12 @@
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                             <label for="from_name">From Name<span class="text-blush"> *</span></label>
                         </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
-                            <div class="form-group">
+                        <div class="row col-lg-10 col-md-10 col-sm-8">
+                            <div class="form-group col-md-6 col-lg-6">
                                 <input type="text" id="from_name" name="from_name" class="form-control" placeholder="Enter Frame Name" required>
+                            </div>
+                            <div class="form-group col-md-6 col-lg-6 pt-1">
+                                @osmlymail.com
                             </div>
                         </div>
                     </div>
@@ -108,15 +111,15 @@
                             <div class="form-group">
                                 <select class="form-control show-tick" id="template_id" name="template_id">
                                     <!-- <option value="">-- Please select --</option> -->
-                                     @foreach ($data['templates'] as $template)
-                                        <option value="{{ $template->id }}">{{ $template->name }}</option>
+                                    @foreach ($data['templates'] as $template)
+                                    <option value="{{ $template->id }}">{{ $template->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                     </div>
 
-                     <div class="row clearfix">
+                    <div class="row clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                             <label for="email_address_2">Schedules</label>
                         </div>
@@ -124,8 +127,8 @@
                             <div class="form-group">
                                 <select class="form-control show-tick" id="schedule_id" name="schedule_id">
                                     <!-- <option value="">-- Please select --</option> -->
-                                     @foreach ($data['schedules'] as $schedule)
-                                        <option value="{{ $schedule->id }}">{{ $schedule->name }}</option>
+                                    @foreach ($data['schedules'] as $schedule)
+                                    <option value="{{ $schedule->id }}">{{ $schedule->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -146,11 +149,11 @@
                             <button type="submit" style="left: 100%;" class="btn btn-raised btn-primary btn-round waves-effect" value="submit">Submit</button>
                         </div>
                     </div>
-                </div>
-                </form>
             </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 

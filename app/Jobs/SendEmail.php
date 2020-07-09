@@ -60,6 +60,9 @@ class SendEmail implements ShouldQueue
             $user=\App\User::find($value['customer_id']);
             $user->emails_sent+=$count;
             $user->save();
+            $value['next_run_time'] = \App\Schedule::find($value['schedule_id'])->getNextRunTimeDate() ?? null;
+            $value->save();
+
         }
         
     }

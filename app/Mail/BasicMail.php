@@ -27,7 +27,7 @@ class BasicMail extends Mailable
         if(!isset($this->object['reply_to'])){
             $this->object['reply_to']='';
         }
-        $this->recepient=$recepient.'@osmlymail.com';
+        $this->recepient=str_replace(" ","_",$recepient).'@osmlymail.com';
     }
 
     /**

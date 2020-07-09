@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Metreex - SEO & Digital Marketing Agency Landing Page Template design by Jthemes -->
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -10,13 +9,12 @@
 
 
 	
-<!-- Mirrored from jthemes.org/html/Metreex/files/demo-10.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 Jun 2020 13:03:37 GMT -->
 <head>
 
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="author" content="Jthemes"/>	
-		<meta name="description" content="Metreex - SEO & Digital Marketing Agency Landing Page Template"/>
+		<meta name="description" content="OSmly Mail Email Campaigning Application"/>
 		<meta name="keywords" content="Responsive, HTML5 template, Jthemes, SEO, Strategy, Digital Marketing Agency, Online Marketing">	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 				
@@ -197,5 +195,4 @@
 
 
 
-<!-- Mirrored from jthemes.org/html/Metreex/files/demo-10.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 Jun 2020 13:03:37 GMT -->
 </html>	

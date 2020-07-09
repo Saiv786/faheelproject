@@ -102,7 +102,7 @@
 							<!-- FOOTER COPYRIGHT -->
 							<div class="col-lg-8">
 								<ul class="bottom-footer-list">
-									<li><p>&copy; Copyright Metreex 2020</p></li>
+									<li><p>&copy; Copyright Osmly Mail 2020</p></li>
 									<li><p><a href="tel:123456789">508.746.9892</a></p></li>
 									<li><p class="last-li"><a href="mailto:yourdomain@mail.com">hello@domain.com</a></p></li>
 								</ul>

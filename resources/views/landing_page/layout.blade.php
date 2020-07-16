@@ -22,11 +22,11 @@
 	<title>Osmly Mail</title>
 
 	<!-- FAVICON AND TOUCH ICONS  -->
-	<link rel="apple-touch-icon" sizes="152x152" href="assets/landing/images/apple-touch-icon-152x152.png">
+	<!-- <link rel="apple-touch-icon" sizes="152x152" href="assets/landing/images/apple-touch-icon-152x152.png">
 	<link rel="apple-touch-icon" sizes="120x120" href="assets/landing/images/apple-touch-icon-120x120.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/landing/images/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" href="assets/landing/images/apple-touch-icon.png">
-	<link rel="icon" href="assets/landing/images/apple-touch-icon.png" type="image/x-icon">
+	<link rel="apple-touch-icon" href="assets/landing/images/apple-touch-icon.png"> -->
+	<link rel="icon" href="{{ asset('assets/images/osmly_mail_logo.png') }}" type="image/x-icon">
 
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">

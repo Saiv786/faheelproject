@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon"> <!-- Favicon-->
+    <link rel="icon" href="{{ asset('assets/images/osmly_mail_logo.png') }}" type="image/x-icon"> <!-- Favicon-->
+    <!-- <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">  -->
     <title>{{ config('app.name') }} - @yield('title')</title>
     <meta name="description" content="@yield('meta_description', config('app.name'))">
     <meta name="author" content="@yield('meta_author', config('app.name'))">
@@ -16,13 +17,13 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    
+
     <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    
+
     <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('assets/css/core.min.css')}}"> -->
-    
+
     @if (trim($__env->yieldContent('page-style')))
     @yield('page-style')
     @endif

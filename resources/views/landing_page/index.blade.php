@@ -1083,7 +1083,7 @@
 					<div class="pricing-slider">
 						<label class="form-slider">
 							<span>How many E-mails do you want?</span>
-							<input type="range" value="1" data-price-input='{
+							<input type="range" value="0" data-price-input='{
 					  		                "0": "500",
 					  		                "1": "30000",
 					  		                "2": "50000",
@@ -1169,7 +1169,7 @@
 					<div class="pricing-slider">
 						<label class="form-slider">
 							<span>How many E-mails do you want?</span>
-							<input type="range" value="1" data-price-input='{
+							<input type="range" value="0" data-price-input='{
 						                      "0": "5000",
 						                      "1": "10000",
 						                      "2": "20000",

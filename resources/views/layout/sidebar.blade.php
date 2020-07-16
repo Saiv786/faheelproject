@@ -2,8 +2,8 @@
 <aside id="leftsidebar" class="sidebar">
     <div class="navbar-brand">
         <button class="btn-menu ls-toggle-btn" type="button"><i class="zmdi zmdi-menu"></i></button>
-        <a href="{{route('dashboard')}}"><img src="{{ asset('assets/images/logo.svg') }}" width="25" alt=""><span class="m-l-10">{{ config('app.name', 'Laravel') }}</span></a>
-        <!-- <a href="{{route('dashboard')}}"><img src="{{ config('app.logo', '../assets/images/logo.svg') }}" width="25" alt=""><span class="m-l-10">{{ config('app.name', 'Laravel') }}</span></a> -->
+        <a href="{{route('dashboard')}}"><img src="{{ asset('assets/images/osmly_mail_logo.png') }}" width="25" alt=""><span class="m-l-10">{{ config('app.name', 'Laravel') }}</span></a>
+        <!-- <a href="{{route('dashboard')}}"><img src="{{ config('app.logo', '../assets/images/osmly_mail_logo.png') }}" width="25" alt=""><span class="m-l-10">{{ config('app.name', 'Laravel') }}</span></a> -->
     </div>
     <div class="menu">
         <ul class="list">

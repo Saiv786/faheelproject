@@ -7,7 +7,7 @@
             @csrf
             <div class="header">
                 <a href="{{route('dashboard')}}">
-                    <img class="logo" src="{{ config('app.logo', '../assets/images/logo.svg') }}" alt="">
+                    <img class="logo" src="{{ config('app.logo', '../assets/images/osmly_mail_logo.png') }}" alt="">
                 </a>
                 <h5>Sign Up</h5>
                 <span>Register a new membership</span>

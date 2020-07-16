@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'logo' => env('APP_LOGO', '../assets/images/logo.svg'),
+    'logo' => env('APP_LOGO', '../assets/images/osmly_mail_logo.png'),
 
     /*
     |--------------------------------------------------------------------------

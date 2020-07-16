@@ -28,7 +28,7 @@
 						<img src="assets/images/Osmly Mail Logo Fix.png" width="120" style="padding: 5px 0px">
 					</a></div>
 				<div class="desktoplogo"><a href="#hero-10" class="logo-white">
-						<img src="assets/images/osmly mail white.png" width="120" style="padding: 5px 0px">
+						<img src="assets/images/osmly_logo.png" width="120" style="padding: 5px 0px">
 					</a></div>
 
 

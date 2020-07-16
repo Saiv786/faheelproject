@@ -233,6 +233,7 @@
 		background-color: darkseagreen;
 		border-color: #0062cc;
 	}
+
 	.btn-primary:hover {
 		color: #fff;
 		background-color: darkseagreen;
@@ -1141,6 +1142,15 @@
 												<li class="is-checked">
 													<div class="pricing-slider-value"></div><span style="margin-left: 10px">Emails</span>
 												</li>
+												<li class="is-checked">
+													<div></div><span>IP Rotation</span>
+												</li>
+												<li class="is-checked">
+													<div></div><span>Custom Templates</span>
+												</li>
+												<li class="is-checked">
+													<div></div><span>Email Scheduling</span>
+												</li>
 											</ul>
 										</div>
 									</div>
@@ -1220,6 +1230,15 @@
 												<li class="is-checked">
 													<div class="pricing-slider-value"></div><span style="margin-left: 10px">Emails</span>
 												</li>
+												<li class="is-checked">
+													<div></div><span>IP Rotation</span>
+												</li>
+												<li class="is-checked">
+													<div></div><span>Custom Templates</span>
+												</li>
+												<li class="is-checked">
+													<div></div><span>Email Scheduling</span>
+												</li>
 											</ul>
 										</div>
 									</div>
@@ -1278,7 +1297,7 @@
 
 
 			<!-- CONTACT FORM -->
-			<div class="col-lg-8">
+			<div class="col-lg-12">
 				<div class="form-holder mb-40 pc-25">
 					<form name="contactform" class="row contact-form">
 
@@ -1315,24 +1334,24 @@
 
 
 			<!-- CONTACTS INFO -->
-			<div class="col-lg-4">
+			<!-- <div class="col-lg-4">
 				<div class="contacts-info pc-25">
 
-					<!-- LOCATION -->
+					
 					<div class="contact-box wow fadeInUp" data-wow-delay="0.4s">
 						<h5 class="h5-sm">Our Location:</h5>
 						<p class="grey-color">Merteex Processing, Inc</p>
 						<p class="grey-color">121 King Street, Melbourne, <br /> Victoria 3000 Australia</p>
 					</div>
 
-					<!-- PHONES -->
+					
 					<div class="contact-box wow fadeInUp" data-wow-delay="0.6s">
 						<h5 class="h5-sm">Contact Phones:</h5>
 						<p class="grey-color">Phone : +12 3 3456 7890</p>
 						<p class="grey-color">Fax : +12 9 8765 4321</p>
 					</div>
 
-					<!-- WORKING HOURS -->
+					
 					<div class="contact-box wow fadeInUp" data-wow-delay="0.8s">
 						<h5 class="h5-sm">Office Hours:</h5>
 						<p class="grey-color">Mon - Fri: 8:30am - 7:30pm</p>
@@ -1341,7 +1360,7 @@
 					</div>
 
 				</div>
-			</div> <!-- END CONTACTS INFO -->
+			</div>  -->
 
 
 		</div> <!-- End row -->
@@ -1355,81 +1374,81 @@
 		<div class="row">
 
 
-			<!-- LOCATION -->
+
 			<div class="col-md-4">
 				<div class="contact-box icon-sm clearfix">
 
-					<!-- Icon -->
-					<img class="img-50" src="{{asset('assets/landing/images/icons/placeholder-4.png')}}" alt="clock-icon" />
 
-					<!-- Text -->
+					<!-- <img class="img-50" src="{{asset('assets/landing/images/icons/placeholder-4.png')}}" alt="clock-icon" />
+
+					
 					<div class="cbox-2-txt">
 
-						<!-- Title -->
+						
 						<h5 class="h5-lg">Our Location:</h5>
 
-						<!-- Title -->
+						
 						<p>Merteex Processing, Inc</p>
 						<p>121 King Street, Melbourne,</p>
 						<p>Victoria 3000 Australia</p>
 
-					</div>
+					</div> -->
 
 				</div>
 			</div>
 
 
-			<!-- QUICK CONTACTS -->
+
 			<div class="col-md-4">
 				<div class="contact-box icon-sm clearfix">
 
-					<!-- Icon -->
-					<img class="img-50" src="{{asset('assets/landing/images/icons/contacts.png')}}" alt="clock-icon" />
 
-					<!-- Text -->
+					<!-- <img class="img-50" src="{{asset('assets/landing/images/icons/contacts.png')}}" alt="clock-icon" />
+
+					
 					<div class="cbox-2-txt">
 
-						<!-- Title -->
+						
 						<h5 class="h5-lg">Quick Contacts:</h5>
 
-						<!-- Text -->
+						
 						<p>Phone: +12 3 3456 7890</p>
 						<p>Fax: +12 9 8765 4321</p>
 						<p><a href="mailto:yourdomain@mail.com">hello@yourdomain.com</a></p>
 
-					</div>
+					</div> -->
 
 				</div>
 			</div>
 
 
-			<!-- WORKING HOURS -->
+
 			<div class="col-md-4">
 				<div class="contact-box clearfix">
 
-					<!-- Icon -->
-					<img class="img-50" src="{{asset('assets/landing/images/icons/clock-1.png')}}" alt="clock-icon" />
 
-					<!-- Text -->
+					<!-- <img class="img-50" src="{{asset('assets/landing/images/icons/clock-1.png')}}" alt="clock-icon" />
+
+					
 					<div class="cbox-2-txt">
 
-						<!-- Title -->
+						
 						<h5 class="h5-lg">Office Hours:</h5>
 
-						<!-- Text -->
+						
 						<p>Mon-Fri: 8:30AM - 7:30PM</p>
 						<p>Saturday: 8:30AM - 3:30PM</p>
 						<p>Sunday: 12:00PM - 5:00PM</p>
 
-					</div>
+					</div> -->
 
 				</div>
 			</div>
 
 
-		</div> <!-- End row -->
-	</div> <!-- End container -->
-</section> <!-- END CONTACTS-2 -->
+		</div>
+	</div>
+</section>
 
 
 

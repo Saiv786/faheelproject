@@ -50,7 +50,7 @@
 
 
 						<!-- SIMPLE NAVIGATION LINK -->
-						<li class="nl-simple" aria-haspopup="true"><a href="#contacts-page">Contacts</a></li>
+						<li class="nl-simple" aria-haspopup="true"><a href="#contacts-page">Contact Us</a></li>
 
 						@guest
 

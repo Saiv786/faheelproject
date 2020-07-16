@@ -67,7 +67,7 @@
 
 
 							<!-- CONTACT FORM -->
-					 		<div class="col-lg-8">
+					 		<div class="col-lg-12">
 					 			<div class="form-holder mb-40 pc-25">
 									<form name="contactform" class="row contact-form">
 																							
@@ -103,25 +103,25 @@
 					 		</div>	<!-- END CONTACT FORM -->	
 
 
-					 		<!-- CONTACTS INFO -->
-					 		<div class="col-lg-4">
+							 
+					 		<!-- <div class="col-lg-4">
 					 			<div class="contacts-info pc-25">
 
-							 		<!-- LOCATION -->
+									 
 									<div class="contact-box wow fadeInUp" data-wow-delay="0.4s">
 										<h5 class="h5-sm">Our Location:</h5>
 										<p class="grey-color">Merteex Processing, Inc</p>														
 										<p class="grey-color">121 King Street, Melbourne, <br /> Victoria 3000 Australia</p>
 									</div>
 
-									<!-- PHONES -->
+									
 									<div class="contact-box wow fadeInUp" data-wow-delay="0.6s">
 										<h5 class="h5-sm">Contact Phones:</h5>	
 										<p class="grey-color">Phone : +12 3 3456 7890</p>
 										<p class="grey-color">Fax : +12 9 8765 4321</p>
 									</div>
 
-									<!-- WORKING HOURS -->
+									
 									<div class="contact-box wow fadeInUp" data-wow-delay="0.8s">
 										<h5 class="h5-sm">Office Hours:</h5>	
 										<p class="grey-color">Mon - Fri: 8:30am - 7:30pm</p>
@@ -130,7 +130,7 @@
 									</div>
 
 								</div>	
-							</div>	<!-- END CONTACTS INFO -->
+							</div>	 -->
 
 
 						</div>	  <!-- End row -->

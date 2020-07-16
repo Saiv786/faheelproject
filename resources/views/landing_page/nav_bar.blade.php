@@ -25,10 +25,10 @@
 				<!-- LOGO IMAGE -->
 				<!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 334 x 80 pixels) -->
 				<div class="desktoplogo"><a href="#hero-10" class="logo-black">
-						<h1>Osmly Mail</h1>
+						<img src="assets/images/Osmly Mail Logo Fix.png" width="120" style="padding: 5px 0px">
 					</a></div>
 				<div class="desktoplogo"><a href="#hero-10" class="logo-white">
-						<h1 style="color: White">Osmly Mail</h1>
+						<img src="assets/images/osmly mail white.png" width="120" style="padding: 5px 0px">
 					</a></div>
 
 

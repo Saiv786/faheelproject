@@ -1,19 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="-265 357 80 80" style="enable-background:new -265 357 80 80;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#4B4B4D;}
-	.st1{fill:#5DC4CB;}
-	.st2{fill:#E37296;}
-	.st3{fill:#60B0E1;}
-	.st4{fill:#F7974B;}
-</style>
-<g id="XMLID_6_">
-	<polygon id="XMLID_1_" class="st0" points="-225.1,363.1 -186.5,430.6 -205.9,430.6 -234.6,380.2 	"/>
-	<polygon id="XMLID_3_" class="st1" points="-244.3,430.9 -263.5,430.9 -254.1,414.3 	"/>
-	<polygon id="XMLID_2_" class="st2" points="-234.4,414.3 -215.3,414.3 -205.9,430.6 -225.2,430.6 	"/>
-	<polygon id="XMLID_4_" class="st3" points="-244.3,397.1 -234.4,414.3 -244.3,430.9 -254.1,414.3 	"/>
-	<polygon id="XMLID_5_" class="st4" points="-234.6,380.2 -244.3,397.1 -234.4,414.3 -224.7,397.4 	"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="1066.176" height="1080" viewBox="0 0 2468 2500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #acacac;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #636363;
+        filter: url(#gradient-overlay-1);
+      }
+
+      .cls-3 {
+        fill: #252525;
+        filter: url(#gradient-overlay-2);
+      }
+
+      .cls-4 {
+        fill: #8b0000;
+        filter: url(#gradient-overlay-3);
+      }
+    </style>
+
+    <filter id="gradient-overlay-1" filterUnits="userSpaceOnUse">
+      <feImage x="675.469" y="663.75" width="1127.251" height="786.03" preserveAspectRatio="none" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTEyNy4yNTEiIGhlaWdodD0iNzg2LjAzIj48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB5MT0iMjYyLjg5MiIgeDI9IjExMjcuMjUxIiB5Mj0iNTIzLjEzOCI+CiAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSJwdXJwbGUiLz4KICA8c3RvcCBvZmZzZXQ9IjAuMzEiIHN0b3AtY29sb3I9InB1cnBsZSIvPgogIDxzdG9wIG9mZnNldD0iMC42OCIgc3RvcC1jb2xvcj0iI2I4M2RiOCIvPgogIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwNWJlMCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIi8+PC9zdmc+"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+      <feBlend in2="SourceGraphic" result="gradientFill"/>
+    </filter>
+    <filter id="gradient-overlay-2" filterUnits="userSpaceOnUse">
+      <feImage x="665.5" y="922.031" width="1137.31" height="670.499" preserveAspectRatio="none" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTEzNy4zMSIgaGVpZ2h0PSI2NzAuNDk5Ij48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB5MT0iMjAzLjk2NiIgeDI9IjExMzcuMzEiIHkyPSI0NjYuNTM0Ij4KICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9InJlZCIvPgogIDxzdG9wIG9mZnNldD0iMC4zMSIgc3RvcC1jb2xvcj0iI2YzNDA0MCIvPgogIDxzdG9wIG9mZnNldD0iMC42OCIgc3RvcC1jb2xvcj0iI2ZjNGE0YSIvPgogIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZjN2Q3ZCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIi8+PC9zdmc+"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+      <feBlend in2="SourceGraphic" result="gradientFill"/>
+    </filter>
+    <filter id="gradient-overlay-3" filterUnits="userSpaceOnUse">
+      <feImage x="695.281" y="1206.72" width="495.59900000000016" height="385.6199999999999" preserveAspectRatio="none" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDk1LjU5OTAwMDAwMDAwMDE2IiBoZWlnaHQ9IjM4NS42MTk5OTk5OTk5OTk5Ij48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB5MT0iMTIuNzczIiB4Mj0iNDk1LjYiIHkyPSIzNzIuODQ3Ij4KICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM5ZTAxMDEiLz4KICA8c3RvcCBvZmZzZXQ9IjAuMzkiIHN0b3AtY29sb3I9IiNiYjJiMmIiLz4KICA8c3RvcCBvZmZzZXQ9IjAuNjEiIHN0b3AtY29sb3I9IiNjYTQyNDIiLz4KICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNlYjZhNmEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIvPjwvc3ZnPg=="/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+      <feBlend in2="SourceGraphic" result="gradientFill"/>
+    </filter>
+  </defs>
+  <g>
+    <path d="M1670.928,663.755 C1670.928,663.755 1497.640,434.221 1190.880,461.210 C1190.880,461.210 975.157,457.918 796.555,663.755 C796.555,663.755 771.630,699.050 775.125,795.570 C775.125,795.570 786.087,903.227 879.000,917.000 C879.000,917.000 941.122,674.019 1218.000,653.000 C1218.000,653.000 1433.135,629.854 1557.000,840.000 C1557.000,840.000 1690.913,1056.165 1520.000,1259.000 C1520.000,1259.000 1738.407,1096.037 1670.928,663.755 Z" class="cls-1"/>
+    <path d="M1802.727,1017.404 C1802.727,1017.404 1804.870,824.505 1670.928,663.755 C1670.928,663.755 1723.720,1039.698 1547.701,1226.379 C1547.701,1226.379 1332.510,1474.646 1235.000,1136.000 C1235.000,1136.000 1211.812,955.855 1128.731,932.743 C1128.731,932.743 1106.943,923.812 1011.934,922.026 C1011.934,922.026 907.459,922.026 866.205,905.951 C866.205,905.951 750.479,884.518 796.555,663.755 C796.555,663.755 705.475,767.706 675.472,922.026 C675.472,922.026 722.620,968.108 724.762,986.326 C724.762,986.326 755.837,1052.770 852.275,1053.841 C852.275,1053.841 1105.158,1027.050 1081.584,1161.008 C1081.584,1161.008 1110.515,1347.477 1218.740,1409.634 C1218.740,1409.634 1415.903,1532.876 1602.350,1347.477 C1602.350,1347.477 1780.225,1177.083 1802.727,1017.404 Z" class="cls-2"/>
+    <path d="M1802.727,1017.404 C1802.727,1017.404 1812.865,1270.579 1608.000,1452.000 C1516.760,1532.799 1387.691,1596.256 1190.880,1592.353 C1190.880,1592.353 1012.823,1499.661 1016.220,1319.614 C1016.220,1319.614 1007.832,1186.228 800.841,1212.448 L695.831,1210.304 C695.831,1210.304 644.397,1049.554 675.472,922.026 C675.472,922.026 712.976,939.173 734.406,987.398 C734.406,987.398 757.980,1053.841 909.067,1048.483 C909.067,1048.483 1089.012,1016.118 1092.299,1147.076 C1092.299,1147.076 1098.728,1286.393 1190.880,1375.341 C1190.880,1375.341 1369.827,1538.234 1577.704,1360.338 C1577.704,1360.338 1759.330,1210.840 1802.727,1017.404 Z" class="cls-3"/>
+    <path d="M1190.880,1592.353 C1190.880,1592.353 1038.722,1497.511 1024.792,1330.331 C1024.792,1330.331 1011.934,1199.052 871.563,1207.089 L695.295,1207.089 C695.295,1207.089 790.627,1540.667 1190.880,1592.353 Z" class="cls-4"/>
+  </g>
 </svg>

@@ -35,6 +35,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/customers', function () {
         return view('customers.index')->with('lists',[]);
     })->name('customers');
+
+    Route::get('/customers/{id}', 'CustomerController@show');    
+    Route::get('/customer_edit/{id}', 'CustomerController@edit');    
+    Route::post('/customer_update/{id}', 'CustomerController@update');    
+
     // Route::get('/profile', 'UserProfileController@getAuthUser')->name('profile');
     Route::delete('/customers/{id}', function($id){
         $user=\App\User::find($id);

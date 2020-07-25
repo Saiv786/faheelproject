@@ -24,7 +24,7 @@
                         @foreach(\App\User::all() as $list)
                         <tr>
                             <td>
-                                <a class="single-user-name" href="{{ action('ContactListController@show',['id'=>$list['id']]) }}">{{$list->name}}</a><br>
+                                <a class="single-user-name" href="{{ action('CustomerController@show',['id'=>$list['id']]) }}">{{$list->name}}</a><br>
                             </td>
                             <td>
                                 <strong>{{$list->email}}</strong><br>
@@ -40,12 +40,18 @@
                             <td class="hidden-md-down">
                                 <strong>{{$list->address}}</strong><br>
                             </td>
-                            <td>
+                            <td style="display: flex">
                                 <form action="{{ url('/customers', ['id' => $list['id']]) }}" method="post">
                                     <button type="submit" class="btn btn-danger btn-icon">
                                         <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-delete"></i>
                                     </button>
                                     {!! method_field('delete') !!}
+                                    {!! csrf_field() !!}
+                                </form>
+                                <form action="{{ url('/customer_edit', ['id' => $list['id']]) }}">
+                                    <button type="submit" class="btn btn-danger btn-icon">
+                                        <i style="font-size: 30px;padding-top: 4px;" class=" zmdi zmdi-edit"></i>
+                                    </button>
                                     {!! csrf_field() !!}
                                 </form>
 

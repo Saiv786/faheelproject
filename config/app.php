@@ -176,6 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        MichaelGrimshaw\MailTracker\MailTrackerServiceProvider::class,
+
     ],
 
     /*
@@ -226,6 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Mail' => MichaelGrimshaw\MailTracker\Facades\Mail::class,
+        'MailStats' => MichaelGrimshaw\MailTracker\Facades\MailStats::class,
 
     ],
 

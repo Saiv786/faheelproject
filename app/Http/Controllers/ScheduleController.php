@@ -14,7 +14,7 @@ class ScheduleController extends Controller
     public function index()
     {
         //
-        ini_set('max_execution_time', 180); 
+        ini_set('max_execution_time', 180);
         $lists = \App\Schedule::where('customer_id', \Auth::user()->id)->get();
         return view('schedules.index')->with('schedules', $lists);
     }
@@ -38,30 +38,30 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $schedule=new \App\Schedule();
-        $schedule['name']=$request['name'];
-        
-        if(isset($request['customRadioInline2'])){
-            $schedule['type']= 'recurring';
-            $schedule['recurr_frequency']= $request['recurr_frequency'];
-            $schedule['recurr_type']= $request['recurr_type'];
-            if(isset($request['frequency_once'])){
-                $schedule['is_once']= true;
-                $schedule['occur_once_time']=\Carbon\Carbon::parse( $request['occur_once_time']);
-            }else{
-                $schedule['is_once']= false;
-                $schedule['occur_every_number']= $request['occur_every_number'];
-                $schedule['occur_every_type']= $request['occur_every_type'];
+        $schedule = new \App\Schedule();
+        $schedule['name'] = $request['name'];
+
+        if (isset($request['customRadioInline2'])) {
+            $schedule['type'] = 'recurring';
+            $schedule['recurr_frequency'] = $request['recurr_frequency'];
+            $schedule['recurr_type'] = $request['recurr_type'];
+            if (isset($request['frequency_once'])) {
+                $schedule['is_once'] = true;
+                $schedule['occur_once_time'] = \Carbon\Carbon::parse($request['occur_once_time']);
+            } else {
+                $schedule['is_once'] = false;
+                $schedule['occur_every_number'] = $request['occur_every_number'];
+                $schedule['occur_every_type'] = $request['occur_every_type'];
             }
-            $schedule['occur_every_start_time']= $request['occur_every_start_time'];
-            $schedule['occur_every_end_time']= $request['occur_every_end_time'];
-        }else{
-            $schedule['type']= 'one_time';
+            $schedule['occur_every_start_time'] = $request['occur_every_start_time'];
+            $schedule['occur_every_end_time'] = $request['occur_every_end_time'];
+        } else {
+            $schedule['type'] = 'one_time';
             $schedule['one_time_time'] = $request['one_time_time'];
         }
-        $schedule['cron']=$schedule->getCronString();
-        $schedule['one_time_date']=$schedule->getNextRunTime(null);
-        $schedule['customer_id']=\Auth::user()->id;
+        $schedule['cron'] = $schedule->getCronString();
+        $schedule['one_time_date'] = $schedule->getNextRunTime(null);
+        $schedule['customer_id'] = \Auth::user()->id;
         $schedule->save();
         return redirect('/schedules');
         //
@@ -91,8 +91,8 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        $obj= \App\Schedule::find($id);
-        return view('schedules.show')->with('schedule',$obj);
+        $obj = \App\Schedule::find($id);
+        return view('schedules.show')->with('schedule', $obj);
     }
 
     /**
@@ -128,29 +128,30 @@ class ScheduleController extends Controller
         try {
             $schedule = \App\Schedule::find($id);
 
-            $schedule['name']=$request['name'];
-        
-            if(isset($request['customRadioInline2'])){
-                $schedule['type']= 'recurring';
-                $schedule['recurr_frequency']= $request['recurr_frequency'];
-                $schedule['recurr_type']= $request['recurr_type'];
-                if(isset($request['frequency_once'])){
-                    $schedule['is_once']= true;
-                    $schedule['occur_once_time']=\Carbon\Carbon::parse( $request['occur_once_time']);
-                }else{
-                    $schedule['is_once']= false;
-                    $schedule['occur_every_number']= $request['occur_every_number'];
-                    $schedule['occur_every_type']= $request['occur_every_type'];
+            $schedule['name'] = $request['name'];
+
+            if (isset($request['customRadioInline2'])) {
+                $schedule['type'] = 'recurring';
+                $schedule['recurr_frequency'] = $request['recurr_frequency'];
+                $schedule['recurr_type'] = $request['recurr_type'];
+                if (isset($request['frequency_once'])) {
+                    $schedule['is_once'] = true;
+                    $schedule['occur_once_time'] = \Carbon\Carbon::parse($request['occur_once_time']);
+                } else {
+                    $schedule['is_once'] = false;
+                    $schedule['occur_every_number'] = $request['occur_every_number'];
+                    $schedule['occur_every_type'] = $request['occur_every_type'];
                 }
-                $schedule['occur_every_start_time']= $request['occur_every_start_time'];
-                $schedule['occur_every_end_time']= $request['occur_every_end_time'];
-            }else{
-                $schedule['type']= 'one_time';
+                $schedule['occur_every_start_time'] = $request['occur_every_start_time'];
+                $schedule['occur_every_end_time'] = $request['occur_every_end_time'];
+            } else {
+                $schedule['type'] = 'one_time';
                 $schedule['one_time_time'] = $request['one_time_time'];
             }
-            $schedule['cron']=$schedule->getCronString();
-            $schedule['one_time_date']=$schedule->getNextRunTime(null);
+            $schedule['cron'] = $schedule->getCronString();
+            $schedule['one_time_date'] = $schedule->getNextRunTime(null);
             $schedule->save();
+            \App\Campaign::where('schedule_id', $schedule->id)->update(['next_run_time' => $schedule['one_time_date']]);
             return redirect('/schedules');
         } catch (\Throwable $e) {
             \Log::error($e);
@@ -167,7 +168,7 @@ class ScheduleController extends Controller
      */
     public function destroy($id)
     {
-        $obj=\App\Schedule::find($id);
+        $obj = \App\Schedule::find($id);
         $obj->delete();
         return redirect('/schedules');
     }

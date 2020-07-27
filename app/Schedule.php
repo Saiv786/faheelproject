@@ -85,13 +85,14 @@ class Schedule extends Model
 		$today = Carbon::today();
 
 		if ($this->type == 'one_time') {
-			$date = $cron->getNextRunDate($this->one_time_time);
-			$date = Carbon::instance($date);
-
+			$date = Carbon::parse($this->one_time_time);
+			// $date = $cron->getNextRunDate($this->one_time_time);
+			// $date = Carbon::instance($date);
+			
 			if ($last_run) {
 				return null;
 			}
-
+			
 			return $date;
 		} else {
 			if ($today->gt($this->occur_every_end_time)) {
@@ -247,8 +248,9 @@ class Schedule extends Model
 		$today = Carbon::today();
 
 		if ($this->type == 'one_time') {
-			$date = $cron->getNextRunDate($this->one_time_time);
-			$date = Carbon::instance($date);
+			// $date = $cron->getNextRunDate($this->one_time_time);
+			// $date = Carbon::instance($date);
+			$date = Carbon::parse($this->one_time_time);
 
 			if ($last_run) {
 				return null;

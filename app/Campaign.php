@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use MichaelGrimshaw\MailTracker\traits\TrackableTrait;
 
 class Campaign extends Model
 {
+	use TrackableTrait;
     public $table = "campaigns";
     
     public $fillable = [

@@ -151,6 +151,9 @@ class ScheduleController extends Controller
             $schedule['cron']=$schedule->getCronString();
             $schedule['one_time_date']=$schedule->getNextRunTime(null);
             $schedule->save();
+            \App\Campaign::where('schedule_id', $schedule['one_time_date'])->update([
+                'next_run_time'=> $schedule['one_time_date'],
+            ]);
             return redirect('/schedules');
         } catch (\Throwable $e) {
             \Log::error($e);

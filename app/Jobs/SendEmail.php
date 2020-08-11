@@ -3,10 +3,10 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class SendEmail implements ShouldQueue
 {
@@ -32,14 +32,14 @@ class SendEmail implements ShouldQueue
         $campaigns = \App\Campaign::where('next_run_time', '<=', \Carbon\Carbon::now())->get();
         \Log::debug($campaigns);
         foreach ($campaigns as $key => $value) {
-            $count=0;
+            $count = 0;
             $content = $value->template->content;
             $regex = '~\{([^}]*)\}~';
             preg_match_all($regex, $content, $matches);
             $vars_in_html = $matches[1];
             $contact_list = $value->contactList()->first();
             foreach ($contact_list->contacts as $contact) {
-                $new_content=$content;
+                $new_content = $content;
                 $val = [];
                 $val['ADDRESS'] = $contact['address'] ?? null;
                 $val['PHONE_NO'] = $contact['phone_no'] ?? null;
@@ -52,19 +52,19 @@ class SendEmail implements ShouldQueue
                     if (!in_array($value_var, $built_in_contact_vars)) {
                         $val[$value_var] = $contact['custom_fields'][strtolower($value_var)] ?? null;
                     }
-                    $new_content=str_replace($matches[0][$key],$val[$value_var],$new_content);
+                    $new_content = str_replace($matches[0][$key], $val[$value_var], $new_content);
                 }
                 $count++;
-                $x = \Mail::to($contact['email'])->send(new \App\Mail\BasicMail(['content' => $new_content, 'subject' => $value['subject'], 'reply_to'=>$value['reply_to']], $value['from_name']));
+                $x = \Mail::to($contact['email'])->send(new \App\Mail\BasicMail(['content' => $new_content, 'subject' => $value['subject'], 'reply_to' => $value['reply_to']], $value['from_name']));
                 \Log::debug($x);
             }
-            $user=\App\User::find($value['customer_id']);
-            $user->emails_sent+=$count;
+            $user = \App\User::find($value['customer_id']);
+            $user->emails_sent += $count;
             $user->save();
             $value['next_run_time'] = \App\Schedule::find($value['schedule_id'])->getNextRunTimeDate() ?? null;
             $value->save();
 
         }
-        
+
     }
 }

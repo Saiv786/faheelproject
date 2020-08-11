@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class BasicMail extends Mailable
 {
@@ -17,17 +16,17 @@ class BasicMail extends Mailable
      *
      * @return void
      */
-    public function __construct($obj=[],$recepient='osmly')
+    public function __construct($obj = [], $recepient = 'osmly')
     {
         //
-        $this->object=$obj;
-        if(!isset($this->object['content'])){
-            $this->object['content']='';
+        $this->object = $obj;
+        if (!isset($this->object['content'])) {
+            $this->object['content'] = '';
         }
-        if(!isset($this->object['reply_to'])){
-            $this->object['reply_to']='';
+        if (!isset($this->object['reply_to'])) {
+            $this->object['reply_to'] = '';
         }
-        $this->recepient=str_replace(" ","_",$recepient).'@osmlymail.com';
+        $this->recepient = str_replace(" ", "_", $recepient) . '@osmlymail.com';
     }
 
     /**
@@ -37,11 +36,11 @@ class BasicMail extends Mailable
      */
     public function build()
     {
-        $output= $this->from($this->recepient)->html($this->object['content']);
-        if($this->object['subject']){
+        $output = $this->from($this->recepient)->html($this->object['content']);
+        if ($this->object['subject']) {
             $output->subject($this->object['subject']);
         }
-        if($this->object['reply_to']){
+        if ($this->object['reply_to']) {
             $output->replyTo($this->object['reply_to']);
         }
         return $output;

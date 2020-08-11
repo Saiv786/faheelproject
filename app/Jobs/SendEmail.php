@@ -33,7 +33,7 @@ class SendEmail implements ShouldQueue
         \Log::debug($campaigns);
         foreach ($campaigns as $key => $value) {
             $count = 0;
-            $content = $value->template->content;
+            $content = $value->template ? $value->template->content : null;
             $regex = '~\{([^}]*)\}~';
             preg_match_all($regex, $content, $matches);
             $vars_in_html = $matches[1];

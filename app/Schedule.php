@@ -75,7 +75,7 @@ class Schedule extends Model
 	//-----------------------------------------
 	protected $appends = ['next_run_time', 'description', 'status', 'status_class'];
 	public function getNextRunTimeAttribute(){
-		return $this->getNextRunTimeDate()->format('F j, Y, g:i a');
+		return $this->getNextRunTimeDate()? $this->getNextRunTimeDate()->format('F j, Y, g:i a'):null;
 	}
 	public function getNextRunTimeDate()
 	{

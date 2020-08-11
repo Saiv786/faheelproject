@@ -24,6 +24,7 @@ class EmailDelivered
      */
     public function handle(EmailDeliveredEvent $event)
     {
+        \Log::debug("delivered");
         $event;
     }
 }

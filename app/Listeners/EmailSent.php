@@ -24,6 +24,7 @@ class EmailSent
      */
     public function handle(EmailSentEvent $event)
     {
+        \Log::debug("sent");
         $event;
     }
 }

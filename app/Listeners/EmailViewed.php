@@ -24,6 +24,7 @@ class EmailViewed
      */
     public function handle(ViewEmailEvent $event)
     {
+        \Log::debug("view");
         $event;
     }
 }

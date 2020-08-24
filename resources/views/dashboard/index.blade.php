@@ -52,7 +52,7 @@
                 <h2>{{\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count()}} <small class="info">of {{\jdavidbakr\MailTracker\Model\SentEmail::count()}}</small></h2>
                 <small>Total Viewed Emails</small>
                 <div class="progress">
-                    <div class="progress-bar l-green" role="progressbar" aria-valuenow=" {{(\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count() )/ (\jdavidbakr\MailTracker\Model\SentEmail::count())*100 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{(\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count() )/ (\jdavidbakr\MailTracker\Model\SentEmail::count())*100 }}%;"></div>
+                    <div class="progress-bar l-green" role="progressbar" aria-valuenow=" {{((\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count() )/ (\jdavidbakr\MailTracker\Model\SentEmail::count() ==0 ?1 :\jdavidbakr\MailTracker\Model\SentEmail::count() ))*100 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{((\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count() )/ (\jdavidbakr\MailTracker\Model\SentEmail::count() ==0 ?1 :\jdavidbakr\MailTracker\Model\SentEmail::count() ))*100 }}%;"></div>
                 </div>
             </div>
         </div>

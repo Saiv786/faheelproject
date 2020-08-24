@@ -88,7 +88,7 @@
                             <label for="password_2"></label>
                             <input type="hidden" id="type" class="form-control" placeholder="">
                         </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
+                        <!-- <div class="col-lg-10 col-md-10 col-sm-8">
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input type="checkbox" id="track_open" value=true name="track_open" class="custom-control-input" {{$list->track_open == true ? "checked" : ''}}>
                                 <label class="custom-control-label" for="track_open">Track opens</label>
@@ -97,7 +97,7 @@
                                 <input type="checkbox" value=true id="track_click" name="track_click" class="custom-control-input" {{$list->track_click == true ? "checked" : ''}}>
                                 <label class="custom-control-label" for="track_click">Track clicks</label>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="row clearfix">

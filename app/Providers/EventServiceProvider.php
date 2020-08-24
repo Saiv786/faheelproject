@@ -25,6 +25,12 @@ class EventServiceProvider extends ServiceProvider
         'jdavidbakr\MailTracker\Events\EmailDeliveredEvent' => [
             'App\Listeners\EmailDelivered',
         ],
+        'jdavidbakr\MailTracker\Events\ComplaintMessageEvent' => [
+            'App\Listeners\EmailComplaint',
+        ],
+        'jdavidbakr\MailTracker\Events\PermanentBouncedMessageEvent' => [
+            'App\Listeners\BouncedEmail',
+        ],
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],

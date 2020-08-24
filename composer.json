@@ -13,6 +13,7 @@
     "aws/aws-sdk-php": "^3.133",
     "braintree/braintree_php": "^3.22",
     "chumper/zipper": "1.0.*",
+    "consoletvs/charts": "6.*",
     "doctrine/dbal": "~2.4",
     "fideloper/proxy": "^4.0",
     "guzzlehttp/guzzle": "6.*",

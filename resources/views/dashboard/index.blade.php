@@ -22,11 +22,13 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="card widget_2 big_icon sales">
             <div class="body">
-                <h6>Sales</h6>
-                <h2>12% <small class="info">of 100</small></h2>
-                <small>6% higher than last month</small>
+                <h6>Contact Lists</h6>
+                <h2>{{\App\ContactList::count()}}<small class="info">of 100</small></h2>
+                <!-- <h2>{{\App\ContactList::count()}}% <small class="info">of 100</small></h2> -->
+                <!-- <small>6% higher than last month</small> -->
+                <small> Total Contact Lists </small>
                 <div class="progress">
-                    <div class="progress-bar l-blue" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" style="width: 38%;"></div>
+                    <div class="progress-bar l-blue" role="progressbar" aria-valuenow="{{\App\ContactList::count()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{\App\ContactList::count()}}%;"></div>
                 </div>
             </div>
         </div>
@@ -34,11 +36,11 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="card widget_2 big_icon email">
             <div class="body">
-                <h6>Email</h6>
-                <h2>39 <small class="info">of 100</small></h2>
-                <small>Total Registered email</small>
+                <h6>Contacts</h6>
+                <h2>{{\App\Contact::count()}} <small class="info">of 1000</small></h2>
+                <small>Total Registered Contacts</small>
                 <div class="progress">
-                    <div class="progress-bar l-purple" role="progressbar" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100" style="width: 39%;"></div>
+                    <div class="progress-bar l-purple" role="progressbar" aria-valuenow="{{(\App\Contact::count())*100/1000}}" aria-valuemin="0" aria-valuemax="100" style="width: {{(\App\Contact::count())*100/1000}}%;"></div>
                 </div>
             </div>
         </div>
@@ -46,11 +48,11 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="card widget_2 big_icon domains">
             <div class="body">
-                <h6>Domains</h6>
-                <h2>8 <small class="info">of 10</small></h2>
-                <small>Total Registered Domain</small>
+                <h6>Open Rate</h6>
+                <h2>{{\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count()}} <small class="info">of {{\jdavidbakr\MailTracker\Model\SentEmail::count()}}</small></h2>
+                <small>Total Viewed Emails</small>
                 <div class="progress">
-                    <div class="progress-bar l-green" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    <div class="progress-bar l-green" role="progressbar" aria-valuenow=" {{(\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count() )/ (\jdavidbakr\MailTracker\Model\SentEmail::count())*100 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{(\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count() )/ (\jdavidbakr\MailTracker\Model\SentEmail::count())*100 }}%;"></div>
                 </div>
             </div>
         </div>
@@ -80,8 +82,8 @@
                         <div class="state_w1 mb-1 mt-1">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <h5>2,365</h5>
-                                    <span><i class="zmdi zmdi-balance"></i> Revenue</span>
+                                    <h5>{{\jdavidbakr\MailTracker\Model\SentEmail::count()}}</h5>
+                                    <span><i class="zmdi zmdi-balance"></i> Sent</span>
                                 </div>
                                 <div class="sparkline" data-type="bar" data-width="97%" data-height="55px" data-bar-Width="3" data-bar-Spacing="5" data-bar-Color="#868e96">5,2,3,7,6,4,8,1</div>
                             </div>

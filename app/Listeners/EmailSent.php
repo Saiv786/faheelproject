@@ -24,7 +24,8 @@ class EmailSent
      */
     public function handle(EmailSentEvent $event)
     {
-        \Log::debug("sent");
-        $event;
+        \Log::debug('send');
+        $x=$event->sent_email->getHeader('X-Model-ID');
+        \Log::debug($x);
     }
 }

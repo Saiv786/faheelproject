@@ -86,7 +86,7 @@
                         </div>
                     </div>
 
-                    <div class="row clearfix">
+                    <!-- <div class="row clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">
                             <label for="password_2"></label>
                             <input type="hidden" id="type" class="form-control" placeholder="">
@@ -101,7 +101,7 @@
                                 <label class="custom-control-label" for="track_click">Track clicks</label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="row clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-4 form-control-label">

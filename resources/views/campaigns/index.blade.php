@@ -7,7 +7,7 @@
         <div class="card state_w1">
             <div class="body d-flex justify-content-between">
                 <div>
-                    <h5>1</h5>
+                    <h5>{{\App\Campaign::where('customer_id',\Auth::user()->id)->count()}}</h5>
                     <span>Total Campaigns</span>
                 </div>
                 <div class="sparkline" data-type="bar" data-width="97%" data-height="55px" data-bar-Width="3" data-bar-Spacing="5" data-bar-Color="#FFC107">5,2,3,7,6,4,8,1</div>
@@ -18,7 +18,7 @@
         <div class="card state_w1">
             <div class="body d-flex justify-content-between">
                 <div>
-                    <h5>25</h5>
+                    <h5>{{\jdavidbakr\MailTracker\Model\SentEmail::count()}}</h5>
                     <span>Total Emails Sent</span>
                 </div>
                 <div class="sparkline" data-type="bar" data-width="97%" data-height="55px" data-bar-Width="3" data-bar-Spacing="5" data-bar-Color="#46b6fe">8,2,6,5,1,4,4,3</div>
@@ -29,8 +29,8 @@
         <div class="card state_w1">
             <div class="body d-flex justify-content-between">
                 <div>
-                    <h5>20</h5>
-                    <span>Emails Successfully Sent</span>
+                    <h5>{{\jdavidbakr\MailTracker\Model\SentEmail::count()}}</h5>
+                    <span>Emails Sent Successfully</span>
                 </div>
                 <div class="sparkline" data-type="bar" data-width="97%" data-height="55px" data-bar-Width="3" data-bar-Spacing="5" data-bar-Color="#ee2558">4,4,3,9,2,1,5,7</div>
             </div>
@@ -40,8 +40,8 @@
         <div class="card state_w1">
             <div class="body d-flex justify-content-between">
                 <div>
-                    <h5>5</h5>
-                    <span>Emails Bounced</span>
+                    <h5>{{\jdavidbakr\MailTracker\Model\SentEmail::where('opens','>',0)->count()}}</h5>
+                    <span>Emails Viewed</span>
                 </div>
                 <div class="sparkline" data-type="bar" data-width="97%" data-height="55px" data-bar-Width="3" data-bar-Spacing="5" data-bar-Color="#04BE5B">7,5,3,8,4,6,2,9</div>
             </div>

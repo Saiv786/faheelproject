@@ -34,15 +34,15 @@
                             </td>
                             <td class="hidden-md-down">
                                 <div class="progress">
-                                    <div class="progress-bar l-blue" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                                    <div class="progress-bar l-blue" role="progressbar" aria-valuenow="{{ ((\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->where('opens','>',0)->count()) / (\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count() == 0 ? 1:\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count()) )*100}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ((\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->where('opens','>',0)->count()) / (\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count() == 0 ? 1:\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count()) )*100}}%;"></div>
                                 </div>
-                                <small>Rate: 50%</small>
+                                <small>Rate: {{( (\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->where('opens','>',0)->count()) / (\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count() == 0 ? 1:\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count()) ) * 100}}%</small>
                             </td>
                             <td class="hidden-md-down">
                                 <div class="progress">
-                                    <div class="progress-bar l-blue" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                    <div class="progress-bar l-blue" role="progressbar" aria-valuenow="{{ ((\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->where('clicks','>',0)->count()) / (\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count() == 0 ? 1:\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count()) )*100}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ((\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->where('clicks','>',0)->count()) / (\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count() == 0 ? 1:\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count()) )*100}}%;"></div>
                                 </div>
-                                <small>Rate: 80%</small>
+                                <small>Rate: {{( (\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->where('clicks','>',0)->count()) / (\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count() == 0 ? 1:\jdavidbakr\MailTracker\Model\SentEmail::where('contact_list_id',$list->id)->count()) ) * 100}}%</small>
                             </td>
                             <td>
                                 <a href="{{ action('ContactListController@edit',['id'=>$list['id']]) }}" data-popup="tooltip" title="" type="button" class="btn btn-icon" data-original-title="New subscriber">

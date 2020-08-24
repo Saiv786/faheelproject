@@ -25,6 +25,7 @@ class EmailViewed
     public function handle(ViewEmailEvent $event)
     {
         \Log::debug("view");
-        $event;
+        $x = $event->sent_email->getHeader('X-Model-ID');
+        \Log::debug($x);
     }
 }

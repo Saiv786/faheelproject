@@ -26,6 +26,7 @@ class BasicMail extends Mailable
         if (!isset($this->object['reply_to'])) {
             $this->object['reply_to'] = '';
         }
+        
         $this->recepient = str_replace(" ", "_", $recepient) . '@osmlymail.com';
     }
 
@@ -43,6 +44,14 @@ class BasicMail extends Mailable
         if ($this->object['reply_to']) {
             $output->replyTo($this->object['reply_to']);
         }
+        $output->withSwiftMessage(function ($message)  {
+            $message->getHeaders()
+                ->addTextHeader('X-Model-ID', $this->object['campaign']);
+            $message->getHeaders()
+                ->addTextHeader('X-contact-Model-ID', $this->object['contact']);
+            $message->getHeaders()
+                ->addTextHeader('X-contact-list-ID', $this->object['contact_list']);
+        });
         return $output;
         // return $this->from($this->recepient)->markdown('emails.basic_mail')->with(['object'=>$this->object]);
         // ->with([

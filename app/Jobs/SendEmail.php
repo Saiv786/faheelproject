@@ -30,7 +30,6 @@ class SendEmail implements ShouldQueue
     public function handle()
     {
         $campaigns = \App\Campaign::where('next_run_time', '<=', \Carbon\Carbon::now())->get();
-        \Log::debug($campaigns);
         foreach ($campaigns as $key => $value) {
             $count = 0;
             $content = $value->template ? $value->template->content : null;
@@ -55,8 +54,7 @@ class SendEmail implements ShouldQueue
                     $new_content = str_replace($matches[0][$key], $val[$value_var], $new_content);
                 }
                 $count++;
-                $x = \Mail::to($contact['email'])->send(new \App\Mail\BasicMail(['content' => $new_content, 'subject' => $value['subject'], 'reply_to' => $value['reply_to']], $value['from_name']));
-                \Log::debug($x);
+                $x = \Mail::to($contact['email'])->send(new \App\Mail\BasicMail(['content' => $new_content, 'subject' => $value['subject'], 'reply_to' => $value['reply_to'],'campaign'=>$value->id,'contact'=>$contact->id,'contact_list'=>$contact_list->id], $value['from_name']));
             }
             $user = \App\User::find($value['customer_id']);
             $user->emails_sent += $count;

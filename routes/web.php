@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use jdavidbakr\MailTracker\AdminController;
+
 Route::get('/', function () {
     // return view('under_construction');
     return view('landing_page.index');
@@ -50,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::post('/profile', 'UserProfileController@updateAuthUser');
     Route::get('/dashboard', function () {
+        $sent=\jdavidbakr\MailTracker\Model\SentEmail::selectRaw('DATE_FORMAT(created_at, "%M %Y") as date,count(*) as count')->groupBy(\DB::raw('DATE_FORMAT(created_at, "%M %Y")'))->get();
+
+
         return view('dashboard.index');
     })->name('dashboard');
     Route::get('/campaigns', function () {
@@ -111,3 +117,4 @@ Auth::routes();
 // Translation data
 Route::get('/datatable_locale', 'Controller@datatable_locale');
 Route::get('/jquery_validate_locale', 'Controller@jquery_validate_locale');
+// Route::get('/email-manager','AdminController@getIndex');

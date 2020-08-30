@@ -40,7 +40,7 @@
             <li class="{{ Request::segment(1) === 'campaigns' ? 'active open' : null }}"><a href="{{route('campaigns')}}"><i class="zmdi zmdi-mail-send"></i><span>Campaigns</span></a></li>
             <li class="{{ Request::segment(1) === 'contacts' ? 'active open' : null }}"><a href="{{route('contacts')}}"><i class="zmdi zmdi-account-box-mail"></i><span>Contact Lists</span></a></li>
             <li class="{{ Request::segment(1) === 'templates' ? 'active open' : null }}"><a href="{{route('templates.index')}}"><i class="zmdi zmdi-assignment"></i><span>Templates</span></a></li>
-            <li class="{{ Request::segment(1) === 'logs' ? 'active open' : null }}"><a href="{{route('activity_logs')}}"><i class="zmdi zmdi-menu"></i><span>Activity Logs</span></a></li>
+            <!-- <li class="{{ Request::segment(1) === 'logs' ? 'active open' : null }}"><a href="{{route('activity_logs')}}"><i class="zmdi zmdi-menu"></i><span>Activity Logs</span></a></li> -->
             @endif
             <!-- <li class="{{ Request::segment(1) === 'app' ? 'active open' : null }}">
                 <a href="#App" class="menu-toggle"><i class="zmdi zmdi-apps"></i> <span>App</span></a>

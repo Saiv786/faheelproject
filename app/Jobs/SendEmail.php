@@ -54,7 +54,7 @@ class SendEmail implements ShouldQueue
                     $new_content = str_replace($matches[0][$key], $val[$value_var], $new_content);
                 }
                 $count++;
-                $x = \Mail::to($contact['email'])->send(new \App\Mail\BasicMail(['content' => $new_content, 'subject' => $value['subject'], 'reply_to' => $value['reply_to'],'campaign'=>$value->id,'contact'=>$contact->id,'contact_list'=>$contact_list->id], $value['from_name']));
+                $x = \Mail::to($contact['email'])->send(new \App\Mail\BasicMail(['content' => $new_content, 'subject' => $value['subject'], 'reply_to' => $value['reply_to'],'campaign'=>$value->id,'contact'=>$contact->id,'contact_list'=>$contact_list->id,'user_id'=>$value->customer_id], $value['from_name']));
             }
             $user = \App\User::find($value['customer_id']);
             $user->emails_sent += $count;

@@ -30,6 +30,11 @@ class AddIdsToSentEmailsTable extends Migration
              ->references('id')->on('contact_lists')
              ->onDelete('set null');
             $table->index(['contact_list_id']);
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')
+             ->references('id')->on('users')
+             ->onDelete('set null');
+            $table->index(['user_id']);
         });
     }
 
@@ -49,6 +54,8 @@ class AddIdsToSentEmailsTable extends Migration
             $table->dropColumn('contact_id');
             $table->dropForeign(['contact_list_id']);
             $table->dropColumn('contact_list_id');
+           $table->dropForeign(['user_id']);
+           $table->dropColumn('user_id');
             
         });
     }

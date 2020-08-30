@@ -51,6 +51,8 @@ class BasicMail extends Mailable
                 ->addTextHeader('X-contact-Model-ID', $this->object['contact']);
             $message->getHeaders()
                 ->addTextHeader('X-contact-list-ID', $this->object['contact_list']);
+            $message->getHeaders()
+                ->addTextHeader('X-user-ID', $this->object['user_id']);
         });
         return $output;
         // return $this->from($this->recepient)->markdown('emails.basic_mail')->with(['object'=>$this->object]);

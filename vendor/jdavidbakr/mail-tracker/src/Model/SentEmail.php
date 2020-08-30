@@ -32,6 +32,7 @@ class SentEmail extends Model
         'campaign_id',
         'contact_id',
         'contact_list_id',
+        'user_id',
     ];
 
     protected $casts = [

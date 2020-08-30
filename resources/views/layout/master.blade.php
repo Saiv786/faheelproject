@@ -23,6 +23,7 @@
 
     <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('assets/css/core.min.css')}}"> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
     @if (trim($__env->yieldContent('page-style')))
     @yield('page-style')

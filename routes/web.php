@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::post('/profile', 'UserProfileController@updateAuthUser');
     Route::get('/dashboard', function () {
-        $sent=\jdavidbakr\MailTracker\Model\SentEmail::selectRaw('DATE_FORMAT(created_at, "%M %Y") as date,count(*) as count')->groupBy(\DB::raw('DATE_FORMAT(created_at, "%M %Y")'))->get();
+        $sent=\jdavidbakr\MailTracker\Model\SentEmail::where('user_id',\Auth::user()->id)->selectRaw('DATE_FORMAT(created_at, "%M %Y") as date,count(*) as count')->groupBy(\DB::raw('DATE_FORMAT(created_at, "%M %Y")'))->get();
 
 
         return view('dashboard.index');
@@ -117,4 +117,5 @@ Auth::routes();
 // Translation data
 Route::get('/datatable_locale', 'Controller@datatable_locale');
 Route::get('/jquery_validate_locale', 'Controller@jquery_validate_locale');
+Route::get('chartjs', 'HomeController@chartjs');
 // Route::get('/email-manager','AdminController@getIndex');

@@ -141,6 +141,7 @@ class MailTracker implements \Swift_Events_SendListener
                 $campaign_id= preg_replace('/[^0-9]/', '', $headers->get('X-Model-ID'));
                 $contact_id=preg_replace('/[^0-9]/', '',$headers->get('X-contact-Model-ID'));
                 $contact_list_id=preg_replace('/[^0-9]/', '',$headers->get('X-contact-list-ID'));
+                $user_id=preg_replace('/[^0-9]/', '',$headers->get('X-user-ID'));
                 do {
                     $hash = Str::random(32);
                     $used = SentEmail::where('hash', $hash)->count();
@@ -177,6 +178,7 @@ class MailTracker implements \Swift_Events_SendListener
                     'campaign_id' => $campaign_id,
                     'contact_id' => $contact_id,
                     'contact_list_id' => $contact_list_id,
+                    'user_id' => $user_id,
                 ]);
 
                 Event::dispatch(new EmailSentEvent($tracker));

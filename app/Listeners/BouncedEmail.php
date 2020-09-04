@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use jdavidbakr\MailTracker\Events\PermanentBouncedMessageEvent;
 
-class EmailSent
+class BouncedEmail
 {
     /**
      * Create the event listener.
